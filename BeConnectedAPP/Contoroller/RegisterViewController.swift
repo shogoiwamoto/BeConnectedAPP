@@ -23,6 +23,13 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     let animationView = AnimationView()
     
     var connectArray = [Account]()
+    
+    //SDWEBimageで使用
+    var pictureURLString = String()
+    
+    //スクリーンサイズをここで取得する
+    let screensize = UIScreen.main.bounds.size
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +52,38 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
             print("restricted")
             
         }
+        
+            
+        NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
+            //キーボードを閉じる時
+        NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
+            
 
         // Do any additional setup after loading the view.
     }
         
+    }
+    
+    @objc func keyboardWillShow(_ notification:Notification){
+        //iphoneのそれぞれの種類、高さが異なる。それをとってくる。
+        let keyboardHeight = ((notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as Any) as AnyObject).cgRectValue.height
+        
+        
+    }
+    
+    @objc func keyboardWillHide(_ notification:Notification){
+        
+        
+        guard let rect = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else{return}
+        
+        UIView.animate(withDuration: duration) {
+            
+            let tranform = CGAffineTransform(translationX: 0, y: 0)
+            self.view.transform = tranform
+            
+            
+        }
     }
     
     
@@ -68,6 +103,11 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
             } else {
                 print("ユーザーの作成が成功しました")
                 
+                //Auth.auth().signIn(with: Credential) { (result, error) in }
+                
+                
+                
+                //DBに送信
                 let connectDB = Database.database().reference().child("connect")
                        
                 //キーバーリュー型でDBに送信
