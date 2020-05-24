@@ -98,7 +98,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="erU-ml-6WJ">
-                                <rect key="frame" x="53" y="283" width="268" height="34"/>
+                                <rect key="frame" x="53" y="292" width="268" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -117,12 +117,12 @@
                                     <action selector="registerNewUser:" destination="D5v-hK-0ei" eventType="touchUpInside" id="pih-KF-Nyo"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WaT-Nj-vJF">
-                                <rect key="frame" x="92" y="83.666666666666629" width="190" height="190"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noimage.png" translatesAutoresizingMaskIntoConstraints="NO" id="WaT-Nj-vJF">
+                                <rect key="frame" x="98" y="88" width="180" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="dZ9-vE-AR0" appends="YES" id="IMy-xT-bxh"/>
+                                    <outletCollection property="gestureRecognizers" destination="RLM-lf-h6S" appends="YES" id="can-kw-D3X"/>
                                 </connections>
                             </imageView>
                         </subviews>
@@ -139,9 +139,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPE-vx-bFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="dZ9-vE-AR0">
+                <tapGestureRecognizer id="RLM-lf-h6S">
                     <connections>
-                        <action selector="imageViewTap:" destination="D5v-hK-0ei" id="xyf-d6-g1w"/>
+                        <action selector="imageViewTap:" destination="D5v-hK-0ei" id="7Bt-mc-h9H"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -205,6 +205,21 @@
             </objects>
             <point key="canvasLocation" x="5126" y="318"/>
         </scene>
+        <!--You Tube View Controller-->
+        <scene sceneID="Bt9-8J-d0L">
+            <objects>
+                <viewController id="acu-CG-OTf" customClass="YouTubeViewController" customModule="BeConnectedAPP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="irL-cS-K5m">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="WWl-xd-Nhf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zd3-Cs-23T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4249" y="1131"/>
+        </scene>
         <!--Item 1-->
         <scene sceneID="bpO-SD-ELj">
             <objects>
@@ -245,6 +260,6 @@
         <segue reference="jj0-vH-KdA"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="person" catalog="system" width="128" height="117"/>
+        <image name="noimage.png" width="600" height="600"/>
     </resources>
 </document>

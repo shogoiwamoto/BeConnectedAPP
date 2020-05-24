@@ -13,6 +13,10 @@ class Account {
     var userName:String = ""
     var likeYoutuberText:String = ""
     
+    //UID追加
+    var uID:String = ""
+    
+    
     
     
 }

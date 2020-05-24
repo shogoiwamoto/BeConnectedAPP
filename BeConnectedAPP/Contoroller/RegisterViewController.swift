@@ -10,6 +10,7 @@ import Firebase
 import Lottie
 import SDWebImage
 import Photos
+import FirebaseStorage
 
 class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
     
@@ -27,12 +28,13 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     //SDWEBimageで使用
     var pictureURLString = String()
     
+    
     //スクリーンサイズをここで取得する
     let screensize = UIScreen.main.bounds.size
     
-        
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         //ユーザーに許可を得る　必須
         PHPhotoLibrary.requestAuthorization { (status) in
@@ -94,7 +96,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
         startAnimaition()
         
         //新規登録
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
             
             if error != nil {
                 //エラーの内容を入れる
@@ -103,37 +105,69 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
             } else {
                 print("ユーザーの作成が成功しました")
                 
-                //Auth.auth().signIn(with: Credential) { (result, error) in }
+ 
+                //DB"child"
+                var profileDB:DatabaseReference
+                profileDB = Database.database().reference().child("prrofile").childByAutoId()
                 
                 
+                //uID取得
+                profileDB.key
+                var uIDString = profileDB.key
                 
-                //DBに送信
-                let connectDB = Database.database().reference().child("connect")
-                       
-                //キーバーリュー型でDBに送信
-                let accountinfo = ["userImage":self.userImageView.image!,"userName":self.usernameTextField.text!,"likeYoutuberText":self.likeYouTuberTextField.text!] as [String : Any]
-                       
-                       //connectDBに入れる
-                       connectDB.childByAutoId().setValue(accountinfo) { (error, result) in
-                           
-                           if error != nil {
-                               
-                               print(error)
-                               
-                           } else {
-                               
-                               print("送信完了")
-                               
-                               
-                               
-                           }
-                       }
                 
+                //Storage
+                //画像のURLの値は、空にしておく
+                let storage = Storage.storage().reference(forURL: "")
+                
+                //画像が入るフォルダ
+                let key = profileDB.child("Users").childByAutoId().key
+                
+                let imageRef = storage.child("Users").child("\(String(describing: key!)).jpeg")
+                
+                //画像送信準備
+                var userprofileImageData:Data = Data()
+                
+                //画像→Data型になっている
+                if self.userImageView != nil {
+                    
+                    userprofileImageData = (self.userImageView.image?.jpegData(compressionQuality: 0.01))!
+                    
+                    
+                }
+                
+                
+                //Storageに画像を送信
+                let uploadTask = imageRef.putData(userprofileImageData, metadata: nil) {
+                    (metaData,error) in
+                    
+                    if error != nil {
+                        
+                        print(error)
+                        return
+                    }
+                    
+                    imageRef.downloadURL { (url, error) in
+                        
+                        if url != nil {
+                            
+                            //キーバリュー型でDBに送信
+                            //見直し、文字列型にする方法調べる
+                            let accountinfo = ["userName":self.usernameTextField.text! as Any,"userImage":url?.absoluteString as Any,"likeYoutuberText":self.likeYouTuberTextField.text! as Any]
+                            
+                            //値をDBに送信
+                            profileDB.updateChildValues(accountinfo)
+                            
+                        }
+                    }
+                    
+                }
+    
                 //アニメーションストップ
                 self.stopAnimation()
                 
                 //画面遷移
-                self.performSegue(withIdentifier: "", sender: nil)
+                self.performSegue(withIdentifier: "next", sender: nil)
                 
             }
             
@@ -141,15 +175,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
         
         
         
-        
     }
-    
-    /*
-     var displayname = string()
-     var URL = string()
-     var URLstring = string()
-     
-     */
     
     
     func startAnimaition() {
@@ -209,6 +235,8 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
         
         
     }
+        
+        
     
     
     //カメラ立ち上げ
@@ -219,14 +247,14 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
         //カメラ利用可能か確認
         if  UIImagePickerController.isSourceTypeAvailable(.camera) {
                
-            //インスタンスを作成する
+            //インスタンス
             let cameraPicker = UIImagePickerController()
             
             cameraPicker.sourceType = sourceType
             cameraPicker.allowsEditing = true
             //設定
             cameraPicker.delegate = self
-            self.present(cameraPicker, animated: true, completion: nil)
+            present(cameraPicker, animated: true, completion: nil)
                    
                    
             }else {
@@ -270,7 +298,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
             
             let selectedImage = info[.originalImage] as! UIImage?
             
-            UserDefaults.standard.set(selectedImage?.jpegData(compressionQuality: 0.1),forKey: "userimage")
+            UserDefaults.standard.set(selectedImage?.jpegData(compressionQuality: 0.1),forKey: "userImage")
             
             userImageView.image = selectedImage
             //picerを閉じる
@@ -291,7 +319,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     //アラート
     func showAlart() {
         
-        let alertContoroller = UIAlertController(title: "選択", message: "どちらを使用しますか", preferredStyle: .actionSheet)
+        let alertContoroller = UIAlertController(title: "選択", message: "どちらを使用しますか", preferredStyle:.actionSheet)
         
         let actionCamera = UIAlertAction(title: "カメラ", style: .default) { (alert) in
             
@@ -310,6 +338,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
         
         alertContoroller.addAction(actionCamera)
         alertContoroller.addAction(actionAlbum)
+        alertContoroller.addAction(actionCansel)
         
         self.present(alertContoroller, animated: true, completion: nil)
         
