@@ -13,7 +13,7 @@
 		6C6902D72478DC07005A009A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6902D62478DC07005A009A /* LoginViewController.swift */; };
 		6C6902D92478F00D005A009A /* ReadAnimaition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6902D82478F00D005A009A /* ReadAnimaition.swift */; };
 		6C6902DD2478FE70005A009A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C6902DC2478FE70005A009A /* GoogleService-Info.plist */; };
-		6C6902DF24795A54005A009A /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6902DE24795A54005A009A /* Account.swift */; };
+		6C6902DF24795A54005A009A /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6902DE24795A54005A009A /* Contents.swift */; };
 		6C80D414247A5A8B00185C70 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C80D413247A5A8B00185C70 /* noimage.png */; };
 		6C80D43A247A8F6D00185C70 /* YTPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80D439247A8F6D00185C70 /* YTPage1ViewController.swift */; };
 		6C80D43C247A904500185C70 /* YouTubeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80D43B247A904500185C70 /* YouTubeData.swift */; };
@@ -46,7 +46,7 @@
 		6C6902D62478DC07005A009A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6C6902D82478F00D005A009A /* ReadAnimaition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadAnimaition.swift; sourceTree = "<group>"; };
 		6C6902DC2478FE70005A009A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		6C6902DE24795A54005A009A /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		6C6902DE24795A54005A009A /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		6C80D413247A5A8B00185C70 /* noimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noimage.png; sourceTree = "<group>"; };
 		6C80D439247A8F6D00185C70 /* YTPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTPage1ViewController.swift; sourceTree = "<group>"; };
 		6C80D43B247A904500185C70 /* YouTubeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeData.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				6C6902D82478F00D005A009A /* ReadAnimaition.swift */,
-				6C6902DE24795A54005A009A /* Account.swift */,
+				6C6902DE24795A54005A009A /* Contents.swift */,
 				6C80D43B247A904500185C70 /* YouTubeData.swift */,
 			);
 			path = Model;
@@ -310,7 +310,7 @@
 				6C80D440247BA1CC00185C70 /* YTPage2ViewController.swift in Sources */,
 				6C6902D92478F00D005A009A /* ReadAnimaition.swift in Sources */,
 				6C80D43E247AA32A00185C70 /* WebViewController.swift in Sources */,
-				6C6902DF24795A54005A009A /* Account.swift in Sources */,
+				6C6902DF24795A54005A009A /* Contents.swift in Sources */,
 				6C80D442247BA20400185C70 /* YTPage3ViewController.swift in Sources */,
 				6C8CD2112473BB2E00E353D7 /* SceneDelegate.swift in Sources */,
 				6C80D448247BA27100185C70 /* YTPage6ViewController.swift in Sources */,

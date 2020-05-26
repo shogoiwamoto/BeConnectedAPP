@@ -23,7 +23,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     //画面遷移時のアニメーションを呼び出す
     let animationView = AnimationView()
     
-    var connectArray = [Account]()
+    var contentsArray = [Contents]()
     
     //SDWEBimageで使用
     var pictureURLString = String()
