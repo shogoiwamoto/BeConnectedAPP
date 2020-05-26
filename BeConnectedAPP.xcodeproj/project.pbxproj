@@ -18,6 +18,12 @@
 		6C80D43A247A8F6D00185C70 /* YTPage1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80D439247A8F6D00185C70 /* YTPage1ViewController.swift */; };
 		6C80D43C247A904500185C70 /* YouTubeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80D43B247A904500185C70 /* YouTubeData.swift */; };
 		6C80D43E247AA32A00185C70 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80D43D247AA32A00185C70 /* WebViewController.swift */; };
+		6C80D440247BA1CC00185C70 /* YTPage2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80D43F247BA1CC00185C70 /* YTPage2ViewController.swift */; };
+		6C80D442247BA20400185C70 /* YTPage3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80D441247BA20400185C70 /* YTPage3ViewController.swift */; };
+		6C80D444247BA22C00185C70 /* YTPage4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80D443247BA22C00185C70 /* YTPage4ViewController.swift */; };
+		6C80D446247BA24E00185C70 /* YTPage5ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80D445247BA24E00185C70 /* YTPage5ViewController.swift */; };
+		6C80D448247BA27100185C70 /* YTPage6ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C80D447247BA27100185C70 /* YTPage6ViewController.swift */; };
+		6C80D44A247BAC3A00185C70 /* header.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C80D449247BAC3A00185C70 /* header.png */; };
 		6C823209247416CA0044AD41 /* 1.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C823208247416CA0044AD41 /* 1.json */; };
 		6C82320B247416D50044AD41 /* 2.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C82320A247416D40044AD41 /* 2.json */; };
 		6C82320E247416E00044AD41 /* 3.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C82320C247416E00044AD41 /* 3.json */; };
@@ -45,6 +51,12 @@
 		6C80D439247A8F6D00185C70 /* YTPage1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTPage1ViewController.swift; sourceTree = "<group>"; };
 		6C80D43B247A904500185C70 /* YouTubeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeData.swift; sourceTree = "<group>"; };
 		6C80D43D247AA32A00185C70 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		6C80D43F247BA1CC00185C70 /* YTPage2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTPage2ViewController.swift; sourceTree = "<group>"; };
+		6C80D441247BA20400185C70 /* YTPage3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTPage3ViewController.swift; sourceTree = "<group>"; };
+		6C80D443247BA22C00185C70 /* YTPage4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTPage4ViewController.swift; sourceTree = "<group>"; };
+		6C80D445247BA24E00185C70 /* YTPage5ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTPage5ViewController.swift; sourceTree = "<group>"; };
+		6C80D447247BA27100185C70 /* YTPage6ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YTPage6ViewController.swift; sourceTree = "<group>"; };
+		6C80D449247BAC3A00185C70 /* header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header.png; sourceTree = "<group>"; };
 		6C823208247416CA0044AD41 /* 1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 1.json; sourceTree = "<group>"; };
 		6C82320A247416D40044AD41 /* 2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 2.json; sourceTree = "<group>"; };
 		6C82320C247416E00044AD41 /* 3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 3.json; sourceTree = "<group>"; };
@@ -92,6 +104,11 @@
 				6C6902D62478DC07005A009A /* LoginViewController.swift */,
 				6C8BAF58247A024D00BE52BE /* YouTubeViewController.swift */,
 				6C80D439247A8F6D00185C70 /* YTPage1ViewController.swift */,
+				6C80D43F247BA1CC00185C70 /* YTPage2ViewController.swift */,
+				6C80D441247BA20400185C70 /* YTPage3ViewController.swift */,
+				6C80D443247BA22C00185C70 /* YTPage4ViewController.swift */,
+				6C80D445247BA24E00185C70 /* YTPage5ViewController.swift */,
+				6C80D447247BA27100185C70 /* YTPage6ViewController.swift */,
 				6C80D43D247AA32A00185C70 /* WebViewController.swift */,
 			);
 			path = Contoroller;
@@ -146,6 +163,7 @@
 				6C82320C247416E00044AD41 /* 3.json */,
 				6C82320D247416E00044AD41 /* 4.json */,
 				6C80D413247A5A8B00185C70 /* noimage.png */,
+				6C80D449247BAC3A00185C70 /* header.png */,
 				6C6902DC2478FE70005A009A /* GoogleService-Info.plist */,
 				6C8CD21C2473BB3200E353D7 /* Info.plist */,
 			);
@@ -227,6 +245,7 @@
 				6C80D414247A5A8B00185C70 /* noimage.png in Resources */,
 				6C82320E247416E00044AD41 /* 3.json in Resources */,
 				6C8406302473CC8D007314E5 /* Main.storyboard in Resources */,
+				6C80D44A247BAC3A00185C70 /* header.png in Resources */,
 				6C823209247416CA0044AD41 /* 1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,12 +303,17 @@
 				6C6902D72478DC07005A009A /* LoginViewController.swift in Sources */,
 				6C6902D52478DBE1005A009A /* ViewController.swift in Sources */,
 				6C8406322473CDAA007314E5 /* IntroViewController.swift in Sources */,
+				6C80D446247BA24E00185C70 /* YTPage5ViewController.swift in Sources */,
 				6C8BAF59247A024D00BE52BE /* YouTubeViewController.swift in Sources */,
 				6C8CD20F2473BB2E00E353D7 /* AppDelegate.swift in Sources */,
+				6C80D444247BA22C00185C70 /* YTPage4ViewController.swift in Sources */,
+				6C80D440247BA1CC00185C70 /* YTPage2ViewController.swift in Sources */,
 				6C6902D92478F00D005A009A /* ReadAnimaition.swift in Sources */,
 				6C80D43E247AA32A00185C70 /* WebViewController.swift in Sources */,
 				6C6902DF24795A54005A009A /* Account.swift in Sources */,
+				6C80D442247BA20400185C70 /* YTPage3ViewController.swift in Sources */,
 				6C8CD2112473BB2E00E353D7 /* SceneDelegate.swift in Sources */,
+				6C80D448247BA27100185C70 /* YTPage6ViewController.swift in Sources */,
 				6C6902D32478DB90005A009A /* RegisterViewController.swift in Sources */,
 				6C80D43C247A904500185C70 /* YouTubeData.swift in Sources */,
 			);

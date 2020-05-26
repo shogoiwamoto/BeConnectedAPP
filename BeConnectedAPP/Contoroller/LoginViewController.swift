@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import Lottie
+import Photos
 
 
 class LoginViewController: UIViewController {
@@ -22,6 +23,34 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //ユーザーに許可を得る　必須
+            PHPhotoLibrary.requestAuthorization { (status) in
+            
+            switch(status) {
+                
+            case.authorized:
+                print("許可されています")
+                
+            case.denied:
+                print("拒否された")
+            
+            case.notDetermined:
+                print("notDetermined")
+                
+            case.restricted:
+                print("restricted")
+                
+            }
+            
+                
+            NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object: nil)
+                //キーボードを閉じる時
+            NotificationCenter.default.addObserver(self, selector: #selector(RegisterViewController.keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object: nil)
+                
+
+            // Do any additional setup after loading the view.
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -80,6 +109,44 @@ class LoginViewController: UIViewController {
         animationView.removeFromSuperview()
         
         
+    }
+    
+    @objc func keyboardWillShow(_ notification:Notification){
+        //iphoneのそれぞれの種類、高さが異なる。それをとってくる。
+        let keyboardHeight = ((notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as Any) as AnyObject).cgRectValue.height
+        
+        
+    }
+    
+    @objc func keyboardWillHide(_ notification:Notification){
+        
+        
+        guard let rect = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else{return}
+        
+        UIView.animate(withDuration: duration) {
+            
+            let tranform = CGAffineTransform(translationX: 0, y: 0)
+            self.view.transform = tranform
+            
+            
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        //見直す
+        emailTextField.resignFirstResponder()
+        
+        passwordTextField.resignFirstResponder()
+        
+    }
+    
+    //キーボードせり上げる did selectを入れる
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
+        textField.resignFirstResponder()
+        return true
     }
     
     

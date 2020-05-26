@@ -1,4 +1,11 @@
 //
+//  YTPage2ViewController.swift
+//  BeConnectedAPP
+//
+//  Created by 岩本省吾 on 2020/05/25.
+//
+
+//
 //  YTPage1ViewController.swift
 //  BeConnectedAPP
 //
@@ -11,7 +18,7 @@ import Alamofire
 import SwiftyJSON
 import SDWebImage
 
-class YTPage1ViewController: UITableViewController,SegementSlideContentScrollViewDelegate {
+class YTPage5ViewController: UITableViewController,SegementSlideContentScrollViewDelegate {
     
     var youtubeData = YouTubeData()
     
@@ -97,7 +104,7 @@ class YTPage1ViewController: UITableViewController,SegementSlideContentScrollVie
     
     func getData() {
         
-        var text = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBgz3Lj-n_qhGWXJFLJL6F_KNITXrvKakQ&q=ヒカキン&part=snippet&maxResults=40&order=date"
+        var text = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBgz3Lj-n_qhGWXJFLJL6F_KNITXrvKakQ&q=犬&part=snippet&maxResults=40&order=date"
         
         //URL内の日本語対応
         let url = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -112,56 +119,56 @@ class YTPage1ViewController: UITableViewController,SegementSlideContentScrollVie
             print(responce)
             
             var videoArray = [String]()
-            var videoId = String()
-            
-            
-            switch responce.result {
+                var videoId = String()
                 
-            case .success:
                 
-                for i in 0...39 {
+                switch responce.result {
                     
-                    let Json = JSON(responce.data as Any)
+                case .success:
                     
-                    videoId = Json["items"][i]["id"]["videoId"].string!
-                    
-                    if videoId != "" {
+                    for i in 0...39 {
                         
-                        videoArray.append(videoId)
+                        let Json = JSON(responce.data as Any)
+                        
+                        videoId = Json["items"][i]["id"]["videoId"].string!
+                        
+                        if videoId != "" {
+                            
+                            videoArray.append(videoId)
+                            
+                        }
+                    }
+                    
+                    
+                    for i in 0...videoArray.count {
+                        
+                        let Json = JSON(responce.data as Any)
+            
+                        let publishedAt = Json["items"][i]["snippet"]["publishedAt"].string
+                        let title = Json["items"][i]["snippet"]["title"].string
+                        
+                        let imageURLString = Json["items"][i]["snippet"]["thumbnails"]["default"]["url"].string
+                        
+                        //YoutubeURL作成
+                        //WEBViewで表示
+                        let youtubeURL = "https://www.youtube.com/watch?v=\(videoId)"
+                        
+                        let channelTitle = Json["items"][i]["snippet"]["channelTitle"].string
+                        
+                       
+                        self.videoIdArray.append(videoId)
+                        //self.publishedAtArray.append(publishedAt!)
+                        self.titleArray.append(title!)
+                        self.imageURLStringArray.append(url!)
+                        self.channelTitleArray.append(channelTitle!)
+                        self.youtubeURLArray.append(youtubeURL)
                         
                     }
-                }
-                
-                
-                for i in 0...videoArray.count {
-                    
-                    let Json = JSON(responce.data as Any)
-        
-                    let publishedAt = Json["items"][i]["snippet"]["publishedAt"].string
-                    let title = Json["items"][i]["snippet"]["title"].string
-                    
-                    let imageURLString = Json["items"][i]["snippet"]["thumbnails"]["default"]["url"].string
-                    
-                    //YoutubeURL作成
-                    //WEBViewで表示
-                    let youtubeURL = "https://www.youtube.com/watch?v=\(videoId)"
-                    
-                    let channelTitle = Json["items"][i]["snippet"]["channelTitle"].string
-                    
-                   
-                    self.videoIdArray.append(videoId)
-                    //self.publishedAtArray.append(publishedAt!)
-                    self.titleArray.append(title!)
-                    self.imageURLStringArray.append(url!)
-                    self.channelTitleArray.append(channelTitle!)
-                    self.youtubeURLArray.append(youtubeURL)
-                    
-                }
                 
                 
                 break
                 
-            case .failure(let error):
+                case .failure(let error):
                 print(error)
                 
                 break
@@ -205,3 +212,4 @@ class YTPage1ViewController: UITableViewController,SegementSlideContentScrollVie
     */
 
 }
+

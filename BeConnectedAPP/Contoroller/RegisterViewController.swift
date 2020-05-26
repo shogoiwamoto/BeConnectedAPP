@@ -108,7 +108,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
  
                 //DB"child"
                 var profileDB:DatabaseReference
-                profileDB = Database.database().reference().child("prrofile").childByAutoId()
+                profileDB = Database.database().reference().child("profile").childByAutoId()
                 
                 
                 //uID取得
@@ -117,8 +117,8 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                 
                 
                 //Storage
-                //画像のURLの値は、空にしておく
-                let storage = Storage.storage().reference(forURL: "")
+                //画像のURLの値は、StorageのURL入力
+                let storage = Storage.storage().reference(forURL: "gs://fanconnect-15235.appspot.com")
                 
                 //画像が入るフォルダ
                 let key = profileDB.child("Users").childByAutoId().key
@@ -129,7 +129,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                 var userprofileImageData:Data = Data()
                 
                 //画像→Data型になっている
-                if self.userImageView != nil {
+                if self.userImageView.image != nil {
                     
                     userprofileImageData = (self.userImageView.image?.jpegData(compressionQuality: 0.01))!
                     
@@ -155,6 +155,8 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                             //見直し、文字列型にする方法調べる
                             let accountinfo = ["userName":self.usernameTextField.text! as Any,"userImage":url?.absoluteString as Any,"likeYoutuberText":self.likeYouTuberTextField.text! as Any]
                             
+                            print("テスト")
+                            
                             //値をDBに送信
                             profileDB.updateChildValues(accountinfo)
                             
@@ -162,6 +164,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                     }
                     
                 }
+                
     
                 //アニメーションストップ
                 self.stopAnimation()
@@ -172,6 +175,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
             }
             
         }
+        
         
         
         
@@ -213,6 +217,8 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
         usernameTextField.resignFirstResponder()
         
         likeYouTuberTextField.resignFirstResponder()
+        
+        passwordTextField.resignFirstResponder()
         
     }
     
@@ -292,7 +298,6 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     
     //上のカメラ、アルバムのデータがここに入る
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
         
         if info[.originalImage] as? UIImage != nil {
             
