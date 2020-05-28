@@ -28,6 +28,8 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     //SDWEBimageで使用
     var pictureURLString = String()
     
+    var uID = String()
+    
     
     //スクリーンサイズをここで取得する
     let screensize = UIScreen.main.bounds.size
@@ -113,7 +115,9 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                 
                 //uID取得
                 timeLineDB.key
-                var uIDString = timeLineDB.key
+                self.uID = timeLineDB.key!
+                
+                UserDefaults.standard.set(self.uID, forKey: "uID")
                 
                 
                 //Storage
@@ -152,7 +156,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                         if url != nil {
                             
                             //キーバリュー型でDBに送信
-                            let accountinfo = ["userName":self.usernameTextField.text! as Any,"userImage":url?.absoluteString as Any,"likeYoutuber":self.likeYouTuberTextField.text! as Any]
+                            let accountinfo = ["userName":self.usernameTextField.text! as Any,"userImage":url?.absoluteString as Any,"likeYoutuber":self.likeYouTuberTextField.text! as Any,"uID":self.uID as Any]
                             
                             print("テスト")
                             
