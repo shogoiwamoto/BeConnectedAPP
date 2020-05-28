@@ -14,7 +14,7 @@ class YouTubeData {
     var publishedAt:String = ""
     var title:String = ""
     var imageURLString:String = ""
-    var youtubeURL = ""
+    var youtubeURL:String = ""
     var channelTitle:String = ""
     
     

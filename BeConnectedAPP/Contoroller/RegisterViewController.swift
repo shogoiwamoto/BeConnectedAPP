@@ -107,13 +107,13 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                 
  
                 //DB"child"
-                var profileDB:DatabaseReference
-                profileDB = Database.database().reference().child("profile").childByAutoId()
+                var timeLineDB:DatabaseReference
+                timeLineDB = Database.database().reference().child("timeLine").childByAutoId()
                 
                 
                 //uID取得
-                profileDB.key
-                var uIDString = profileDB.key
+                timeLineDB.key
+                var uIDString = timeLineDB.key
                 
                 
                 //Storage
@@ -121,7 +121,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                 let storage = Storage.storage().reference(forURL: "gs://fanconnect-15235.appspot.com")
                 
                 //画像が入るフォルダ
-                let key = profileDB.child("Users").childByAutoId().key
+                let key = timeLineDB.child("Users").childByAutoId().key
                 
                 let imageRef = storage.child("Users").child("\(String(describing: key!)).jpeg")
                 
@@ -152,13 +152,12 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                         if url != nil {
                             
                             //キーバリュー型でDBに送信
-                            //見直し、文字列型にする方法調べる
-                            let accountinfo = ["userName":self.usernameTextField.text! as Any,"userImage":url?.absoluteString as Any,"likeYoutuberText":self.likeYouTuberTextField.text! as Any]
+                            let accountinfo = ["userName":self.usernameTextField.text! as Any,"userImage":url?.absoluteString as Any,"likeYoutuber":self.likeYouTuberTextField.text! as Any]
                             
                             print("テスト")
                             
                             //値をDBに送信
-                            profileDB.updateChildValues(accountinfo)
+                            timeLineDB.updateChildValues(accountinfo)
                             
                         }
                     }

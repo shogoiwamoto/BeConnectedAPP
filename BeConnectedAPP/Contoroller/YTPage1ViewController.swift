@@ -7,9 +7,9 @@
 
 import UIKit
 import SegementSlide
-import Alamofire
 import SwiftyJSON
 import SDWebImage
+import Alamofire
 
 class YTPage1ViewController: UITableViewController,SegementSlideContentScrollViewDelegate {
     
@@ -23,15 +23,27 @@ class YTPage1ViewController: UITableViewController,SegementSlideContentScrollVie
     var channelTitleArray = [String]()
     
     
+    let refresh = UIRefreshControl()
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         getData()
-        tableView.reloadData()
         
+        tableView.refreshControl = refresh
+        refresh.addTarget(self, action: #selector(update), for: .valueChanged)
         // Do any additional setup after loading the view.
+        tableView.reloadData()
+    }
+    
+    @objc func update() {
+        
+        getData()
+        tableView.reloadData()
+        refresh.endRefreshing()
+        
     }
     
     @objc var scrollView: UIScrollView {
@@ -97,7 +109,7 @@ class YTPage1ViewController: UITableViewController,SegementSlideContentScrollVie
     
     func getData() {
         
-        var text = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBgz3Lj-n_qhGWXJFLJL6F_KNITXrvKakQ&q=ヒカキン&part=snippet&maxResults=40&order=date"
+        var text = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyDFpdsuZ9DDXZVXC5QUWjP4wwSjyaHkuFs&q=那須川天心&part=snippet&maxResults=20&order=date"
         
         //URL内の日本語対応
         let url = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -105,75 +117,57 @@ class YTPage1ViewController: UITableViewController,SegementSlideContentScrollVie
         
         //JSON
         //request 値が帰ってきたものを配列に
-        AF.request(url as! URLConvertible, method: .get, parameters: nil, encoding: JSONEncoding.default).responseJSON { (responce)
-            in
+        AF.request(url as! URLConvertible, method: .get, parameters: nil, encoding: JSONEncoding.default).responseJSON { (responce) in
             
-            //JSON表示確認
+        
+        //AF.request(url,method: .get,parameters: nil,encoding: JSONEncoding.default).responseJSON { (responce) in
+            
             print(responce)
-            
-            var videoArray = [String]()
-            var videoId = String()
-            
             
             switch responce.result {
                 
             case .success:
                 
-                for i in 0...39 {
+                for i in 0...19 {
                     
-                    let Json = JSON(responce.data as Any)
+                    let json:JSON = JSON(responce.data as Any)
+                    let videoId = json["items"][i]["id"]["videoId"].string
+                    let publishedAt = json["items"][i]["snippet"]["publishedAt"].string
+                    let title = json["items"][i]["snippet"]["title"].string
+                    let imageURLString = json["items"][i]["snippet"]["thumbnails"]["default"]["url"].string
                     
-                    videoId = Json["items"][i]["id"]["videoId"].string!
+                    let youtubeURL = "https://www.youtube.com/watch?v=\(videoId!)"
                     
-                    if videoId != "" {
-                        
-                        videoArray.append(videoId)
-                        
-                    }
-                }
-                
-                
-                for i in 0...videoArray.count {
+                    let channelTitle = json["items"][i]["snippet"]["channelTitle"].string
                     
-                    let Json = JSON(responce.data as Any)
-        
-                    let publishedAt = Json["items"][i]["snippet"]["publishedAt"].string
-                    let title = Json["items"][i]["snippet"]["title"].string
                     
-                    let imageURLString = Json["items"][i]["snippet"]["thumbnails"]["default"]["url"].string
-                    
-                    //YoutubeURL作成
-                    //WEBViewで表示
-                    let youtubeURL = "https://www.youtube.com/watch?v=\(videoId)"
-                    
-                    let channelTitle = Json["items"][i]["snippet"]["channelTitle"].string
-                    
-                   
-                    self.videoIdArray.append(videoId)
-                    //self.publishedAtArray.append(publishedAt!)
+                    self.videoIdArray.append(videoId!)
+                    self.publishedAtArray.append(publishedAt!)
                     self.titleArray.append(title!)
-                    self.imageURLStringArray.append(url!)
+                    self.imageURLStringArray.append(imageURLString!)
                     self.channelTitleArray.append(channelTitle!)
                     self.youtubeURLArray.append(youtubeURL)
                     
+                    
                 }
                 
-                
                 break
-                
             case .failure(let error):
                 print(error)
                 
                 break
             }
             
-            //データを呼ぶ
             self.tableView.reloadData()
             
+            
         }
-        
-        
     }
+        
+     
+
+        
+    
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

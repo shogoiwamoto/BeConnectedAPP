@@ -11,24 +11,29 @@ class Contents {
     
     var userImage:String = ""
     var userName:String = ""
-    var likeYoutuberText:String = ""
+    var likeYoutuber:String = ""
     
-    //UID追加
+    //uID追加
     var uID:String = ""
     
     //SNS画面投稿日時
-    var postDateString:String = ""
+    var postDate:String = ""
+    
+    //投稿コメント
+    var comment:String = ""
+    
     
     
     //画面遷移後、データのURLを取得する
     
-    init(userImage:String,userName:String,likeYoutuberText:String,uID:String,postDateString:String) {
+    init(userImage:String,userName:String,likeYoutuber:String,uID:String,postDate:String,comment:String) {
         
         self.userImage = userImage
         self.userName = userName
-        self.likeYoutuberText = likeYoutuberText
+        self.likeYoutuber = likeYoutuber
         self.uID = uID
-        self.postDateString = postDateString
+        self.postDate = postDate
+        self.comment = comment
         
     }
     
