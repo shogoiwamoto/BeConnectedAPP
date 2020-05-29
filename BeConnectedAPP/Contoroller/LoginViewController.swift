@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import Lottie
 import Photos
+import TransitionButton
 
 
 class LoginViewController: UIViewController {
@@ -17,12 +18,23 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    
+    @IBOutlet weak var loginButton: TransitionButton!
+    
     let animationView = AnimationView()
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        loginButton.backgroundColor = .systemPink
+        loginButton.setTitle("ログイン", for: .normal)
+        loginButton.cornerRadius = 20
+        loginButton.spinnerColor = .white
+        loginButton.addTarget(self, action: #selector(loginAction(_:)), for: .touchUpInside)
         
         //ユーザーに許可を得る　必須
             PHPhotoLibrary.requestAuthorization { (status) in
@@ -55,33 +67,60 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
     
-    @IBAction func login(_ sender: Any) {
+    @IBAction func loginAction(_ sender: Any) {
         
-        startAnimaition()
+        loginButton.startAnimation() // 2: Then start the animation when the user tap the button
+        let qualityOfServiceClass = DispatchQoS.QoSClass.background
+        let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
         
+    
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-            
+        
             if error != nil {
-                
+            
                 print(error)
-                
-                
+                self.loginButton.stopAnimation(animationStyle: .shake, revertAfterDelay: .leastNonzeroMagnitude, completion: nil)
+            
+            
             } else {
-                
+            
                 print("ログイン成功")
+            
+            backgroundQueue.async(execute: {
                 
-                self.stopAnimation()
+                sleep(3) // 3: Do your networking task or background work here.
                 
-                self.performSegue(withIdentifier: "next", sender: nil)
+                DispatchQueue.main.async(execute: { () -> Void in
+                    // 4: Stop the animation, here you have three options for the `animationStyle` property:
+                    // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
+                    // .shake: when you want to reflect to the user that the task did not complete successfly
+                    // .normal
+                    self.loginButton.stopAnimation(animationStyle: .expand, completion: {
+                        self.performSegue(withIdentifier: "login", sender: nil)
+                        
+                    })
+                    
+                    
+                    
+                })
+            })
+            
+                
+                
+                
+                
+                
+                
             }
-            
-            
         }
         
         
+        
     }
+    
+
+    
     
     func startAnimaition() {
         

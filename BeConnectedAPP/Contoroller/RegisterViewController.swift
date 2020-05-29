@@ -20,6 +20,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    
     //画面遷移時のアニメーションを呼び出す
     let animationView = AnimationView()
     
@@ -40,6 +41,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         //ユーザーに許可を得る　必須

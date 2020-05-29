@@ -135,7 +135,7 @@
                         <outlet property="passwordTextField" destination="SHK-og-PJi" id="t7J-9B-55M"/>
                         <outlet property="userImageView" destination="WaT-Nj-vJF" id="KZP-z3-ipw"/>
                         <outlet property="usernameTextField" destination="erU-ml-6WJ" id="VsC-Vv-LLK"/>
-                        <segue destination="xuz-H4-Cm9" kind="show" identifier="next" id="jj0-vH-KdA"/>
+                        <segue destination="xuz-H4-Cm9" kind="presentation" identifier="next" id="Ugp-yr-cia"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPE-vx-bFC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -167,12 +167,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rff-XS-cNw">
-                                <rect key="frame" x="96" y="457" width="182" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pt1-R5-he1" customClass="TransitionButton" customModule="TransitionButton">
+                                <rect key="frame" x="96" y="371" width="182" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ログイン"/>
+                                <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="login:" destination="7Fa-ic-jZz" eventType="touchUpInside" id="D5k-mb-H2Y"/>
+                                    <action selector="loginAction:" destination="7Fa-ic-jZz" eventType="touchUpInside" id="oGz-dg-lay"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -181,8 +181,9 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="7b8-L8-j1i" id="yQG-ik-7Le"/>
+                        <outlet property="loginButton" destination="Pt1-R5-he1" id="EyV-ep-hQI"/>
                         <outlet property="passwordTextField" destination="u8w-BL-UsN" id="L4U-cc-dB6"/>
-                        <segue destination="xuz-H4-Cm9" kind="show" identifier="next" id="Tqc-8K-wH8"/>
+                        <segue destination="xuz-H4-Cm9" kind="presentation" identifier="login" id="cKg-lD-CEr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XNO-er-0YK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -194,7 +195,7 @@
             <objects>
                 <viewController id="r1c-Mz-GTp" customClass="SNSViewController" customModule="BeConnectedAPP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jqq-A4-NLC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="XNP-TE-oeB"/>
@@ -345,7 +346,7 @@
             <objects>
                 <viewController id="g6A-0k-zfh" customClass="YouTubeViewController" customModule="BeConnectedAPP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T4R-CR-VNf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6qM-Pb-u1t"/>
@@ -377,7 +378,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jj0-vH-KdA"/>
+        <segue reference="Ugp-yr-cia"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="noimage.png" width="600" height="600"/>

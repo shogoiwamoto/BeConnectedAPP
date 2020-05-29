@@ -24,6 +24,8 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         //アイコン画像を呼び出して反映する
         if UserDefaults.standard.object(forKey: "userImage") != nil {
             
