@@ -122,34 +122,6 @@ class LoginViewController: UIViewController {
 
     
     
-    func startAnimaition() {
-        
-        //lottieのアニメーション名
-        let animation = Animation.named("loading")
-        
-        //サイズ、幅調整する
-        //見直しポイント
-        animationView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height/1.5)
-        
-        animationView.animation = animation
-        //ここも見直し、わかりやすい表示をする
-        animationView.contentMode = .scaleToFill
-        
-        animationView.loopMode = .loop
-        animationView.play()
-        
-        view.addSubview(animationView)
-    }
-    
-    
-    func stopAnimation() {
-        
-        //排除する
-        animationView.removeFromSuperview()
-        
-        
-    }
-    
     @objc func keyboardWillShow(_ notification:Notification){
         //iphoneのそれぞれの種類、高さが異なる。それをとってくる。
         let keyboardHeight = ((notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as Any) as AnyObject).cgRectValue.height
