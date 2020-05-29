@@ -23,10 +23,15 @@ class Contents {
     var comment:String = ""
     
     
+    //userAuthID
+    var userAuthID:String = ""
+    
+    
+    
     
     //画面遷移後、データのURLを取得する
     
-    init(userImage:String,userName:String,likeYoutuber:String,uID:String,postDate:String,comment:String) {
+    init(userImage:String,userName:String,likeYoutuber:String,uID:String,postDate:String,comment:String,userAuthID:String) {
         
         self.userImage = userImage
         self.userName = userName
@@ -34,7 +39,7 @@ class Contents {
         self.uID = uID
         self.postDate = postDate
         self.comment = comment
-        
+        self.userAuthID = userAuthID
     }
     
     

@@ -31,6 +31,10 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     var uID = String()
     
     
+    var userAuthID = String()
+    
+    
+    
     //スクリーンサイズをここで取得する
     let screensize = UIScreen.main.bounds.size
     
@@ -91,6 +95,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     }
     
     
+    
     //Firebaseにユーザー登録
     @IBAction func registerNewUser(_ sender: Any) {
         
@@ -106,6 +111,24 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                 
             } else {
                 print("ユーザーの作成が成功しました")
+                
+                
+                Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
+                    
+                    if let error = error {
+                        
+                        return
+                        
+                        
+                    }
+                    
+                    var userAuthID = user!.user.uid
+                    self.userAuthID = userAuthID
+                    
+                    
+                
+                
+                
                 
  
                 //DB"child"
@@ -156,7 +179,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                         if url != nil {
                             
                             //キーバリュー型でDBに送信
-                            let accountinfo = ["userName":self.usernameTextField.text! as Any,"userImage":url?.absoluteString as Any,"likeYoutuber":self.likeYouTuberTextField.text! as Any,"uID":self.uID as Any]
+                            let accountinfo = ["userName":self.usernameTextField.text! as Any,"userImage":url?.absoluteString as Any,"likeYoutuber":self.likeYouTuberTextField.text! as Any,"uID":self.uID as Any,"userAuthID":self.userAuthID as Any]
                             
                             print("テスト")
                             
@@ -177,7 +200,9 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                 
             }
             
+            }
         }
+            
         
         
         
