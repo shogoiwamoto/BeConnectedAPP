@@ -65,7 +65,7 @@ class YouTubeViewController: SegementSlideDefaultViewController {
     //タイトル
     override var titlesInSwitcher: [String] {
         
-        return ["ミュージック","ゲーム実況","ファッション","美容","メイク","ペット"]
+        return ["Music","Game","Fashion","Beauty","Makeup","Pets"]
         
         
     }

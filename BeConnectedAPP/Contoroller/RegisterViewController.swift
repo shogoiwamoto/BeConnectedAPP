@@ -134,13 +134,13 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                 
  
                 //DB"child"
-                var timeLineDB:DatabaseReference
-                timeLineDB = Database.database().reference().child("timeLine").childByAutoId()
+                var profileDB:DatabaseReference
+                profileDB = Database.database().reference().child("profile").childByAutoId()
                 
                 
                 //uID取得
-                timeLineDB.key
-                self.uID = timeLineDB.key!
+                profileDB.key
+                self.uID = profileDB.key!
                 
                 UserDefaults.standard.set(self.uID, forKey: "uID")
                 
@@ -150,7 +150,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                 let storage = Storage.storage().reference(forURL: "gs://fanconnect-15235.appspot.com")
                 
                 //画像が入るフォルダ
-                let key = timeLineDB.child("Users").childByAutoId().key
+                let key = profileDB.child("Users").childByAutoId().key
                 
                 let imageRef = storage.child("Users").child("\(String(describing: key!)).jpeg")
                 
@@ -186,7 +186,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                             print("テスト")
                             
                             //値をDBに送信
-                            timeLineDB.updateChildValues(accountinfo)
+                            profileDB.updateChildValues(accountinfo)
                             
                         }
                     }

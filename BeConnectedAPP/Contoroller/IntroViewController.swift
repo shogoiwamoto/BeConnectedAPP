@@ -15,10 +15,10 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
     
     /*lottieアニメーションを表示する配列を準備
      ファイル名*/
-    var onboardArray = ["1","2","3","4"]
+    var onboardArray = ["1","2","3"]
     
     //アニメーションと一緒に表示するメッセージテキスト
-    var onboardStringArray = ["1","2","3","4"]
+    //var onboardStringArray = ["","",""]
     
     
 
@@ -30,12 +30,12 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         
         scrollset()
         
-        for i in 0...3 {
+        for i in 0...2 {
             
             //初期化する
             let animaitionView = AnimationView()
             //ファイルを呼び出す
-            let animaition = Animation.named(onboardStringArray[i])
+            let animaition = Animation.named(onboardArray[i])
             
             //
             animaitionView.frame = CGRect(x: CGFloat(i) * view.frame.size.width, y: 0, width: view.frame.size.width, height: view.frame.size.height)
@@ -74,8 +74,12 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
         //widh 4個分の表示
         scrollView.contentSize = CGSize(width: view.frame.size.width * 4, height: view.frame.size.height)
         
+        /*
+         
+         
         
-        for i in 0...3 {
+        
+        for i in 0...2 {
             
             //CGFroat型にキャスト
             //yは、3分の1で試す　中央に表示する
@@ -93,7 +97,7 @@ class IntroViewController: UIViewController, UIScrollViewDelegate {
             
         }
         
-        
+         */
         
     }
 

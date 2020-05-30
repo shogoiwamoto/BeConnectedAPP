@@ -7,6 +7,7 @@
 
 import UIKit
 import SegementSlide
+import Firebase
 
 class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollViewDelegate {
 
@@ -29,6 +30,9 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
     var contentsArray = [Contents]()
     
     
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +52,8 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
         super .viewWillAppear(true)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        
         
     }
     
@@ -129,6 +135,14 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
     func fetchContentsData() {
         
         //データを引っ張るところから
+        let ref = Database.database().reference().child("Music").queryLimited(toLast: 100).queryOrdered(byChild: "postDate").observe(.value) { (snapshot) in
+            
+            //値を空にする
+            self.contentsArray.removeAll()
+            
+            
+            
+        }
         
         
     }

@@ -109,7 +109,7 @@ class YTPage1ViewController: UITableViewController,SegementSlideContentScrollVie
     
     func getData() {
         
-        var text = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyDFpdsuZ9DDXZVXC5QUWjP4wwSjyaHkuFs&q=音楽&part=snippet&maxResults=20&order=date"
+        var text = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyDFpdsuZ9DDXZVXC5QUWjP4wwSjyaHkuFs&q=音楽&part=snippet&maxResults=30&order=date"
         
         //URL内の日本語対応
         let url = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -128,7 +128,7 @@ class YTPage1ViewController: UITableViewController,SegementSlideContentScrollVie
                 
             case .success:
                 
-                for i in 0...19 {
+                for i in 0...29 {
                     
                     let json:JSON = JSON(responce.data as Any)
                     let videoId = json["items"][i]["id"]["videoId"].string
