@@ -38,6 +38,8 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
+         
         
         
         //アイコン画像を呼び出して反映する
@@ -51,6 +53,7 @@ class PostViewController: UIViewController {
         }
         
         userImageView.image = userImage2
+  */
 
         // Do any additional setup after loading the view.
     }
@@ -64,12 +67,14 @@ class PostViewController: UIViewController {
         
         Auth.auth().signInAnonymously { (result, error) in
             
-            if error == nil {
+            if error != nil {
                 
                 guard let user = result?.user else { return }
                 
+                print("shogo")
+                
                 let userAuthID = user.uid
-                var saveProfile = SaveProfile(userAuthID: userAuthID, userName: self.userName)
+                var saveProfile = SaveProfile(userAuthID: userAuthID, userName: self.userName, userImage: self.userImage, likeYoutuber: self.likeYoutuber,uID: self.uID)
                 saveProfile.saveProfile()
                 self.dismiss(animated: true, completion: nil)
                 
@@ -77,12 +82,12 @@ class PostViewController: UIViewController {
                 
                 //アラート
                 print(error?.localizedDescription as Any)
+                print("AuthID取得失敗")
                 
                 
             }
             
         }
-        
         
         ref.child("profile").child("userAuthID").observe(.value) { (snapshot) in
             
@@ -97,6 +102,8 @@ class PostViewController: UIViewController {
             }
         }
         
+        
+        
     }
     
     
@@ -107,20 +114,49 @@ class PostViewController: UIViewController {
         
         
         
-        var timeLineDB:DatabaseReference
-        timeLineDB = Database.database().reference().child("Music").childByAutoId()
-    
+        
+        var timeLineDB = Database.database().reference().child("Music")
         
         //キーバリュー型で送信
         //userImageなども値を取得後に追加する
-        let postinfo = ["userImage":self.userImage as Any,"userName":self.userName as Any,"likeYoutuber":self.likeYoutuber as Any,"comment":self.commentTextView as Any,"postDate":ServerValue.timestamp() as! [String:Any]]
+        let postinfo = ["userImage":self.userImage as Any,"userName":self.userName as Any,"uID":self.uID as Any,"userAuthID":self.userAuthID as Any,"likeYoutuber":self.likeYoutuber as Any,"comment":self.commentTextView.text as Any,"postDate":ServerValue.timestamp() as! [String:Any]]
+        
         
         //DBに送信
-        timeLineDB.updateChildValues(postinfo)
+        timeLineDB.childByAutoId().setValue(postinfo) { (error, result) in
+            
+            if error != nil {
+                
+                print(error)
+                
+            } else {
+                
+                print("送信完了")
+                
+                self.commentTextView.text = ""
+                
+            }
+            
+            
+        }
+        
+        
         
         //navigationで戻る
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
         
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        commentTextView.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
+        textField.resignFirstResponder()
+        return true
     }
     
 

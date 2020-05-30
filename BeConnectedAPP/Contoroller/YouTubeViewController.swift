@@ -10,11 +10,20 @@ import SwiftyJSON
 import SDWebImage
 import Alamofire
 import SegementSlide
+import JXSegmentedView
 
 class YouTubeViewController: SegementSlideDefaultViewController {
     
     
-    
+    private lazy var segmentedDataSource: JXSegmentedNumberDataSource = {
+        let dataSource = JXSegmentedNumberDataSource()
+        dataSource.titleSelectedColor = .white
+        dataSource.isTitleColorGradientEnabled = true
+        dataSource.isItemSpacingAverageEnabled = true
+        dataSource.isSelectedAnimable = true
+        dataSource.isTitleMaskEnabled = true
+        return dataSource
+    }()
     
     
     

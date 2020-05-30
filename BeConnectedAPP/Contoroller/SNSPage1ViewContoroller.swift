@@ -9,14 +9,15 @@ import UIKit
 import SegementSlide
 import Firebase
 
+
 class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollViewDelegate {
 
     var userImage = String()
     var userName = String()
     var likeYoutuber = String()
     var uID = String()
-    var postDate = String()
     var commnet = String()
+    
     
     //Postする時に使う
     var passedimage = UIImage()
@@ -26,9 +27,7 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
     @IBOutlet weak var SNSTimeLine: UITableView!
     @IBOutlet weak var commentButton: UIButton!
     
-    
     var contentsArray = [Contents]()
-    
     
     
     
@@ -37,11 +36,6 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //新規登録画面の情報を呼び出す
-        
-        //情報を呼び出す
-        
-        // Do any additional setup after loading the view.
         
         
         
@@ -52,6 +46,8 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
         super .viewWillAppear(true)
         
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        fetchContentsData()
         
         
         
@@ -119,6 +115,8 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
     }
     
     
+    
+    
     @IBAction func commentAction(_ sender: Any) {
         
         let postVC = self.storyboard?.instantiateViewController(identifier: "post") as! PostViewController
@@ -140,10 +138,71 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
             //値を空にする
             self.contentsArray.removeAll()
             
+            //Datan
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                
+                for snap in snapshot {
+                    
+                    //ディクショナリー型で値をpostDataに入れる
+                    if let postData = snap.value as? [String:Any] {
+                        
+                        let userName = postData["userName"] as? String
+                        let userImage = postData["userImage"] as? String
+                        let likeyoutuber = postData["likeYoutuber"] as? String
+                        let comment = postData["comment"] as? String
+                        let uID = postData["uID"] as? String
+                        let userAuthID = postData["userAuthID"] as? String
+                        
+                        
+                        
+                        
+                        if let postDate = postData["postDate"] as? CLong {
+                            
+                            let timeString = self.convertTimeStamp(serverTimeStamp: postDate)
+                            
+                            self.contentsArray.append(Contents(userImage: userImage!, userName: userName!, likeYoutuber: likeyoutuber!, uID: uID!, postDate: timeString, comment: comment!, userAuthID: userAuthID!))
+                            
+                            
+                            
+                        }
+                        
+                    }
+            }
             
+                self.SNSTimeLine.reloadData()
+                
+            
+                //タイムラインの最新の投稿をい取得する
+                let indexPath = IndexPath(row: self.contentsArray.count - 1, section: 0)
+                
+                if self.contentsArray.count >= 5 {
+                    
+                    self.SNSTimeLine.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                    
+                    
+                }
+                
+            
+                
             
         }
+    }
         
+    }
+    
+    
+    
+    func convertTimeStamp(serverTimeStamp:CLong)->String {
+        
+        //時間を変換する
+        let x = serverTimeStamp/1000
+        let date = Date(timeIntervalSince1970: TimeInterval(x))
+        let formatter = DateFormatter()
+        
+        formatter.dateStyle = .long
+        formatter.timeStyle = .medium
+        
+        return formatter.string(from: date)
         
     }
     
