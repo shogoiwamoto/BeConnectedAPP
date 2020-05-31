@@ -31,14 +31,14 @@ class Contents {
     
     //画面遷移後、データのURLを取得する
     
-    init(userImage:String,userName:String,likeYoutuber:String,uID:String,postDate:String,comment:String,userAuthID:String) {
+    init(userImage:String,userName:String,likeYoutuber:String,uID:String,userAuthID:String) {
         
         self.userImage = userImage
         self.userName = userName
         self.likeYoutuber = likeYoutuber
         self.uID = uID
-        self.postDate = postDate
-        self.comment = comment
+        //self.postDate = postDate
+        //self.comment = comment
         self.userAuthID = userAuthID
     }
     

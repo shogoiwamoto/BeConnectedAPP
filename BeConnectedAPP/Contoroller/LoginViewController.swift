@@ -86,6 +86,7 @@ class LoginViewController: UIViewController {
             } else {
             
                 print("ログイン成功")
+                
             
             backgroundQueue.async(execute: {
                 

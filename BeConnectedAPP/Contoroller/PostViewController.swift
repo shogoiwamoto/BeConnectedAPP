@@ -28,6 +28,10 @@ class PostViewController: UIViewController {
     var uID = String()
     var userAuthID = String()
     
+    var emailText = String()
+    var passwordText = String()
+    
+    
     
     
     
@@ -64,10 +68,12 @@ class PostViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(true)
         
+        UserDefaults.standard.object(forKey: "userAuthID")
         
         Auth.auth().signInAnonymously { (result, error) in
             
-            if error != nil {
+            
+            if error == nil {
                 
                 guard let user = result?.user else { return }
                 

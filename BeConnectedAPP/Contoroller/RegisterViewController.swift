@@ -126,10 +126,6 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                     
                     var userAuthID = user!.user.uid
                     self.userAuthID = userAuthID
-                    
-                    
-                
-                
                 
                 
  

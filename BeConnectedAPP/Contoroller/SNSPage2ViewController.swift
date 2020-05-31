@@ -154,7 +154,7 @@ class SNSPage2ViewController: UITableViewController,SegementSlideContentScrollVi
                                 
                                 let timeString = self.convertTimeStamp(serverTimeStamp: postDate)
                                 
-                                self.contentsArray.append(Contents(userImage: userImage!, userName: userName!, likeYoutuber: likeyoutuber!, uID: uID!, postDate: timeString, comment: comment!, userAuthID: userAuthID!))
+                                self.contentsArray.append(Contents(userImage: userImage!, userName: userName!, likeYoutuber: likeyoutuber!, uID: uID!, userAuthID: userAuthID!))
                                 
                                 
                                 
