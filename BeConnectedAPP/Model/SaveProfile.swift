@@ -52,7 +52,7 @@ class SaveProfile {
     func saveProfile()  {
         
         //ref.setValue(Contents.self)
-        UserDefaults.standard.set(ref, forKey: "userAuthID")
+        UserDefaults.standard.set(ref.key, forKey: "userAuthID")
     }
     
     

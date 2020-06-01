@@ -42,7 +42,7 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*
+        
          
         
         
@@ -57,7 +57,6 @@ class PostViewController: UIViewController {
         }
         
         userImageView.image = userImage2
-  */
 
         // Do any additional setup after loading the view.
     }
@@ -68,7 +67,22 @@ class PostViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(true)
         
-        UserDefaults.standard.object(forKey: "userAuthID")
+        ref.child("profile").child("userAuthID").observe(.value) { (snapshot) in
+            
+            for child in snapshot.children {
+                
+            
+                let childSnapShot = child as! DataSnapshot
+                
+                //dataArrayに入る
+                self.dataArray.append(childSnapShot as! String)
+                print(self.dataArray.debugDescription)
+                
+            }
+        }
+        
+        
+        
         
         Auth.auth().signInAnonymously { (result, error) in
             
@@ -77,12 +91,14 @@ class PostViewController: UIViewController {
                 
                 guard let user = result?.user else { return }
                 
-                print("shogo")
                 
                 let userAuthID = user.uid
                 var saveProfile = SaveProfile(userAuthID: userAuthID, userName: self.userName, userImage: self.userImage, likeYoutuber: self.likeYoutuber,uID: self.uID)
                 saveProfile.saveProfile()
-                self.dismiss(animated: true, completion: nil)
+                
+                print(saveProfile)
+                //self.dismiss(animated: true, completion: nil)
+                
                 
             } else {
                 
@@ -95,18 +111,6 @@ class PostViewController: UIViewController {
             
         }
         
-        ref.child("profile").child("userAuthID").observe(.value) { (snapshot) in
-            
-            for child in snapshot.children {
-                
-            
-                let childSnapShot = child as! DataSnapshot
-                
-                //dataArrayに入る
-                self.dataArray.append(childSnapShot as! String)
-                
-            }
-        }
         
         
         
@@ -120,12 +124,11 @@ class PostViewController: UIViewController {
         
         
         
-        
         var timeLineDB = Database.database().reference().child("Music")
         
         //キーバリュー型で送信
         //userImageなども値を取得後に追加する
-        let postinfo = ["userImage":self.userImage as Any,"userName":self.userName as Any,"uID":self.uID as Any,"userAuthID":self.userAuthID as Any,"likeYoutuber":self.likeYoutuber as Any,"comment":self.commentTextView.text as Any,"postDate":ServerValue.timestamp() as! [String:Any]]
+        let postinfo = ["userImage":self.userImage as Any,"userName":self.userName as Any,"likeYoutuber":self.likeYoutuber as Any,"comment":self.commentTextView.text as Any,"postDate":ServerValue.timestamp() as! [String:Any]]
         
         
         //DBに送信

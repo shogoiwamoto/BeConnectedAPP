@@ -27,7 +27,7 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
     @IBOutlet weak var SNSTimeLine: UITableView!
     @IBOutlet weak var commentButton: UIButton!
     
-    var contentsArray = [Contents]()
+    var contentsArray = [postTime]()
     
     
     
@@ -150,8 +150,8 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
                         let userImage = postData["userImage"] as? String
                         let likeyoutuber = postData["likeYoutuber"] as? String
                         let comment = postData["comment"] as? String
-                        let uID = postData["uID"] as? String
-                        let userAuthID = postData["userAuthID"] as? String
+                        //let uID = postData["uID"] as? String
+                        //let userAuthID = postData["userAuthID"] as? String
                         
                         
                         
@@ -160,7 +160,7 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
                             
                             let timeString = self.convertTimeStamp(serverTimeStamp: postDate)
                             
-                            self.contentsArray.append(Contents(userImage: userImage!, userName: userName!, likeYoutuber: likeyoutuber!, uID: uID!, userAuthID: userAuthID!))
+                            self.contentsArray.append(postTime(userImage: userImage!, userName: userName!, likeYoutuber: likeyoutuber!, postDate: timeString, comment: comment!))
                             
                             
                             
