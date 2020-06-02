@@ -28,8 +28,8 @@ class PostViewController: UIViewController {
     var uID = String()
     var userAuthID = String()
     
-    var emailText = String()
-    var passwordText = String()
+    var emailText:String = ""
+    var passwordText:String = ""
     
     
     
@@ -67,24 +67,7 @@ class PostViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(true)
         
-        ref.child("profile").child("userAuthID").observe(.value) { (snapshot) in
-            
-            for child in snapshot.children {
-                
-            
-                let childSnapShot = child as! DataSnapshot
-                
-                //dataArrayに入る
-                self.dataArray.append(childSnapShot as! String)
-                print(self.dataArray.debugDescription)
-                
-            }
-        }
-        
-        
-        
-        
-        Auth.auth().signInAnonymously { (result, error) in
+        Auth.auth().signIn(withEmail: emailText, password: passwordText) { (result, error) in
             
             
             if error == nil {
@@ -109,6 +92,21 @@ class PostViewController: UIViewController {
                 
             }
             
+        }
+        
+        
+        ref.child("profile").observe(.value) { (snapshot) in
+            
+            for child in snapshot.children {
+                
+            
+                let childSnapShot = child as! DataSnapshot
+                
+                //dataArrayに入る
+                self.dataArray.append(childSnapShot as! String)
+                print(self.dataArray.debugDescription)
+                
+            }
         }
         
         
