@@ -1,16 +1,15 @@
 //
-//  PostViewController.swift
+//  MusicPostViewController.swift
 //  BeConnectedAPP
 //
-//  Created by 岩本省吾 on 2020/05/28.
+//  Created by 岩本省吾 on 2020/06/05.
 //
 
 import UIKit
 import Firebase
-import SDWebImage
+import Alamofire
 
-class PostViewController: UIViewController {
-    
+class MusicPostViewController: UIViewController {
     
     var passedImage = UIImage()
     
@@ -19,7 +18,7 @@ class PostViewController: UIViewController {
     
     //データを取ってくる
     var ref = Database.database().reference()
-    var dataArray = [Contents]()
+    var dataArray = [String]()
     
     
     var userImage = String()
@@ -31,50 +30,20 @@ class PostViewController: UIViewController {
     var emailText:String = ""
     var passwordText:String = ""
     
-    
-    
-    
-    
+
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var musicSendButton: UIButton!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-         
-        /*
-         
-         
-        
-        
-        //アイコン画像を呼び出して反映する
-        if UserDefaults.standard.object(forKey: "userImage") != nil {
-            
-            userImageData = UserDefaults.standard.object(forKey: "userImage") as! Data
-            
-            userImage2 = UIImage(data: userImageData)!
-            
-            
-        }
-        
-        userImageView.image = userImage2
-     */
-     
+
         // Do any additional setup after loading the view.
     }
     
-    
-    
-    
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(animated)
-        
-        
-        fetchUserData()
-        
-        /*
-         
         
         Auth.auth().signIn(withEmail: emailText, password: passwordText) { (result, error) in
             
@@ -108,21 +77,17 @@ class PostViewController: UIViewController {
             for child in snapshot.children {
                 
             
-                let childSnapShot = child as! AnyObject
+                let childSnapShot = child as AnyObject
                 
-                
-                let userName = childSnapShot.value(forKey: "userName")
                 let userImage = childSnapShot.value(forKey: "userImage")
+                let userName = childSnapShot.value(forKey: "userName")
                 let likeYoutuber = childSnapShot.value(forKey: "likeYotuber")
                 
                 let uID = childSnapShot.value(forKey: "uID")
                 let userAuthID = childSnapShot.value(forKey: "userAuthID")
                 
-                self.userImageView.image = userImage as! UIImage
-                
                 //dataArrayに入る
                 self.dataArray.append(childSnapShot as! String)
-                
                 print(self.dataArray.debugDescription)
                 print("shogo")
             }
@@ -133,36 +98,10 @@ class PostViewController: UIViewController {
         
     }
     
-    /*
-     ref.child("profile").observe(.value) { (snapshot) in
-         
-         for child in snapshot.children {
-             
-         
-             let childSnapShot = child as! DataSnapshot
-             
-             //dataArrayに入る
-             self.dataArray.append(childSnapShot as! String)
-             print(self.dataArray.debugDescription)
-             
-         }
-     }
-     
-     
-     */
     
-    
-    */
-    }
-    
-    
-    @IBAction func postAction(_ sender: Any) {
-        
-        
+    @IBAction func musicSendAction(_ sender: Any) {
         
         var timeLineDB = Database.database().reference().child("Music")
-        
-        //var userImage = dataArray(userImage)
         
         //キーバリュー型で送信
         //userImageなども値を取得後に追加する
@@ -188,11 +127,13 @@ class PostViewController: UIViewController {
         }
         
         
-        
-        //navigationで戻る
-        //self.navigationController?.popViewController(animated: true)
-        
     }
+    
+    
+   
+    
+    
+    
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -205,63 +146,6 @@ class PostViewController: UIViewController {
         textField.resignFirstResponder()
         return true
     }
-    
-        
-    func fetchUserData() {
-        
-
-        print(Auth.auth().currentUser!.uid)
-        
-        self.ref.observe(.value) { (snapshot) in
-
-            
-            self.ref = snapshot.ref
-            
- 
-            var testkey = Auth.auth().currentUser!.uid
-
-         
-            //そのパスで取得できるようにする
-            //self.ref.child(testkey).observe(.value) { (snapshots) in
-              
-            self.ref.child("profile").child(testkey).observe(.value) { (snapshots) in
-                
-                print("shogo")
-                print(snapshots)
-
-                    
-
-                if let value = snapshots.value as? [String:Any] {
-
-
-                    var userAuthID = (value["userAuthID"] as? String)!
-                    var userName = (value["userName"] as? String)!
-                    print(userAuthID)
-                    print(userName)
-                    
-                    var userImage = (value["userImage"] as? String)!
-                    var likeYoutuber = (value["likeYoutuber"] as? String)!
-                    //self.uID = (value["uID"] as? String)!
-                    print(userImage)
-                    print(likeYoutuber)
-                    
-                    //self.userImageView.image = self.userImage as? UIImage
-                    self.dataArray.append(Contents(userImage: userImage, userName: userName, likeYoutuber: likeYoutuber, userAuthID: userAuthID))
-                    
-                    print(self.dataArray)
-                    
-
-
-
-                }
-
-            }
-
-    }
-
-    }
-
-
 
     /*
     // MARK: - Navigation

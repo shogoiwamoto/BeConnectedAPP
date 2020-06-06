@@ -42,6 +42,7 @@
 		6CAEA4F02481575900AA3F81 /* PostTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAEA4EF2481575900AA3F81 /* PostTime.swift */; };
 		6CB5C6A22481DA3C00BA9AB8 /* SaveProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB5C6A12481DA3C00BA9AB8 /* SaveProfile.swift */; };
 		6CB5C6A424820A1E00BA9AB8 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 6CB5C6A324820A1E00BA9AB8 /* loading.json */; };
+		6CB8FEEB248A3AB10067926E /* MusicPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB8FEEA248A3AB10067926E /* MusicPostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		6CAEA4EF2481575900AA3F81 /* PostTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTime.swift; sourceTree = "<group>"; };
 		6CB5C6A12481DA3C00BA9AB8 /* SaveProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveProfile.swift; sourceTree = "<group>"; };
 		6CB5C6A324820A1E00BA9AB8 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		6CB8FEEA248A3AB10067926E /* MusicPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				6C93B187247FDB18002BD94E /* SNSPage5ViewContoroller.swift */,
 				6C93B189247FDB3E002BD94E /* SNSPage6ViewContoroller.swift */,
 				6C93B18B247FDED4002BD94E /* PostViewController.swift */,
+				6CB8FEEA248A3AB10067926E /* MusicPostViewController.swift */,
 			);
 			path = Contoroller;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				6C93B184247FDABC002BD94E /* SNSPage3ViewContoroller.swift in Sources */,
 				6C8BAF59247A024D00BE52BE /* YouTubeViewController.swift in Sources */,
 				6CAEA4F02481575900AA3F81 /* PostTime.swift in Sources */,
+				6CB8FEEB248A3AB10067926E /* MusicPostViewController.swift in Sources */,
 				6CB5C6A22481DA3C00BA9AB8 /* SaveProfile.swift in Sources */,
 				6C8CD20F2473BB2E00E353D7 /* AppDelegate.swift in Sources */,
 				6C93B17C247FD843002BD94E /* SNSViewController.swift in Sources */,

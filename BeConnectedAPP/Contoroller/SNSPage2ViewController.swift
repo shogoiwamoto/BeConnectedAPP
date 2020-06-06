@@ -29,7 +29,7 @@ class SNSPage2ViewController: UITableViewController,SegementSlideContentScrollVi
     @IBOutlet weak var commentButton: UIButton!
     
     
-    var contentsArray = [Contents]()
+    var contentsArray = [postTime]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,7 +154,7 @@ class SNSPage2ViewController: UITableViewController,SegementSlideContentScrollVi
                                 
                                 let timeString = self.convertTimeStamp(serverTimeStamp: postDate)
                                 
-                                self.contentsArray.append(Contents(userImage: userImage!, userName: userName!, likeYoutuber: likeyoutuber!, uID: uID!, userAuthID: userAuthID!))
+                                self.contentsArray.append(postTime(userImage: userImage!, userName: userName!, likeYoutuber: likeyoutuber!, postDate: timeString, comment: comment!))
                                 
                                 
                                 

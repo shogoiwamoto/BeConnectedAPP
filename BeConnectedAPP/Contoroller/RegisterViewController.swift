@@ -124,21 +124,21 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                         
                     }
                     
-                    var userAuthID = user!.user.uid
-                    self.userAuthID = userAuthID
+                var userAuthID = user!.user.uid
+                self.userAuthID = userAuthID
                 
                 
  
                 //DB"child"
                 var profileDB:DatabaseReference
-                profileDB = Database.database().reference().child("profile").childByAutoId()
+                    profileDB = Database.database().reference().child("profile").child(userAuthID)
                 
                 
                 //uID取得
-                profileDB.key
-                self.uID = profileDB.key!
+                //profileDB.key
+                //self.uID = profileDB.key!
                 
-                UserDefaults.standard.set(self.uID, forKey: "uID")
+                //UserDefaults.standard.set(self.uID, forKey: "uID")
                 
                 
                 //Storage
@@ -177,9 +177,9 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                         if url != nil {
                             
                             //キーバリュー型でDBに送信
-                            let accountinfo = ["userName":self.usernameTextField.text! as Any,"userImage":url?.absoluteString as Any,"likeYoutuber":self.likeYouTuberTextField.text! as Any,"uID":self.uID as Any,"userAuthID":self.userAuthID as Any]
+                            let accountinfo = ["userAuthID":self.userAuthID as Any,"userName":self.usernameTextField.text! as Any,"userImage":url?.absoluteString as Any,"likeYoutuber":self.likeYouTuberTextField.text! as Any]
                             
-                            print("テスト")
+                            print("DB送信済み")
                             
                             //値をDBに送信
                             profileDB.updateChildValues(accountinfo)

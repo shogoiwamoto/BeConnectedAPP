@@ -86,6 +86,8 @@ class LoginViewController: UIViewController {
             } else {
             
                 print("ログイン成功")
+                print(self.emailTextField)
+                print(self.passwordTextField)
                 
             
             backgroundQueue.async(execute: {
