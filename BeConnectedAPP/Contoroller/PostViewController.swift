@@ -33,8 +33,6 @@ class PostViewController: UIViewController {
     
     
     
-    
-    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var commentTextView: UITextView!
     
@@ -159,10 +157,14 @@ class PostViewController: UIViewController {
     @IBAction func postAction(_ sender: Any) {
         
         
+        userImage = dataArray[0].userImage
+        userName = dataArray[0].userName
+        likeYoutuber = dataArray[0].likeYoutuber
         
         var timeLineDB = Database.database().reference().child("Music")
         
-        //var userImage = dataArray(userImage)
+        //let senduserImage = dataArray[1].userImage as! String
+        
         
         //キーバリュー型で送信
         //userImageなども値を取得後に追加する
@@ -248,16 +250,17 @@ class PostViewController: UIViewController {
                     //self.userImageView.image = self.userImage as? UIImage
                     self.dataArray.append(Contents(userImage: userImage, userName: userName, likeYoutuber: likeYoutuber, userAuthID: userAuthID))
                     
-                    print(self.dataArray)
+                    print(self.dataArray.debugDescription)
                     
-
-
+                    
 
                 }
 
             }
+            
+            
 
-    }
+        }
 
     }
 
