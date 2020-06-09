@@ -43,10 +43,10 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
         tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "Cell")
         
         //可変の自動設定
-        //tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         
-        //tableView.estimatedRowHeight = 120
+        tableView.estimatedRowHeight = 130
         
         
     }
@@ -131,7 +131,7 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         //見直し 要調整
-        return view.frame.size.height/5
+        return view.frame.size.height/3.5
     }
     
     
@@ -209,7 +209,7 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
     
     func featcData() {
         
-       var reference = Database.database().reference().child("Peace").observe(.value) { (snapshot) in
+       var reference = Database.database().reference().child("POW2").observe(.value) { (snapshot) in
     
             print("投稿情報取得")
             print(snapshot)

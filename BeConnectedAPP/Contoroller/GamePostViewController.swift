@@ -35,6 +35,7 @@ class GamePostViewController: UIViewController {
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var commentTextView: UITextView!
+    @IBOutlet weak var shareButton: UIButton!
     
 
     override func viewDidLoad() {
@@ -75,6 +76,7 @@ class GamePostViewController: UIViewController {
         //fetchUserData()
         
         userImageView.layer.cornerRadius = 30
+        shareButton.layer.cornerRadius = 20
         
         /*
          

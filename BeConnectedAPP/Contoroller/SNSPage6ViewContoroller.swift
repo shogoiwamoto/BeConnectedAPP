@@ -24,8 +24,10 @@ class SNSPage6ViewContoroller: UITableViewController,SegementSlideContentScrollV
     override func viewDidLoad() {
            super.viewDidLoad()
            
-           tableView.delegate = self
-           tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        tableView.delegate = self
+        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 130
 
            // Do any additional setup after loading the view.
        }
@@ -96,7 +98,7 @@ class SNSPage6ViewContoroller: UITableViewController,SegementSlideContentScrollV
            override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
                
                //見直し 要調整
-               return view.frame.size.height/6
+            return view.frame.size.height/3.5
            }
     
     func featcData() {

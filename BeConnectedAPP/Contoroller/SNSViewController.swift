@@ -78,13 +78,13 @@ class SNSViewController: SegementSlideDefaultViewController {
         case 1:
             return SNSPage2ViewController()
         case 2:
-            return SNSPage1ViewContoroller()
+            return SNSPage3ViewContoroller()
         case 3:
-            return SNSPage1ViewContoroller()
+            return SNSPage4ViewContoroller()
         case 4:
-            return SNSPage1ViewContoroller()
+            return SNSPage5ViewContoroller()
         case 5:
-            return SNSPage1ViewContoroller()
+            return SNSPage6ViewContoroller()
                 
         default:
             return SNSPage1ViewContoroller()
