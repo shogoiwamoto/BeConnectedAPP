@@ -118,7 +118,7 @@ class YTPage3ViewController: UITableViewController,SegementSlideContentScrollVie
     
     func getData() {
         
-        var text = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyDFpdsuZ9DDXZVXC5QUWjP4wwSjyaHkuFs&q=ファッション&part=snippet&maxResults=5&order=date"
+        var text = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBgz3Lj-n_qhGWXJFLJL6F_KNITXrvKakQ&q=ファッション&part=snippet&maxResults=5&order=date"
         
         //URL内の日本語対応
         let url = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -139,8 +139,15 @@ class YTPage3ViewController: UITableViewController,SegementSlideContentScrollVie
                 
                 for i in 0...4 {
                     
+                    
                     let json:JSON = JSON(responce.data as Any)
                     let videoId = json["items"][i]["id"]["videoId"].string
+                    
+                    if videoId == nil {
+                        
+                        return
+                    }
+                    
                     let publishedAt = json["items"][i]["snippet"]["publishedAt"].string
                     let title = json["items"][i]["snippet"]["title"].string
                     let imageURLString = json["items"][i]["snippet"]["thumbnails"]["default"]["url"].string

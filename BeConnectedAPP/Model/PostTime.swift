@@ -15,15 +15,16 @@ class postTime {
     var likeYoutuber:String = ""
     var postDate:String = ""
     var comment:String = ""
+    
 
     
     
-    init(userImage:String,userName:String,likeYoutuber:String,postDate:String,comment:String) {
+    init(userImage:String,userName:String,likeYoutuber:String,comment:String) {
         
         self.userImage = userImage
         self.userName = userName
         self.likeYoutuber = likeYoutuber
-        self.postDate = postDate
+        //self.postDate = postDate
         self.comment = comment
     }
     

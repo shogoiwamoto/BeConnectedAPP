@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		19F6B420201661625B81C257 /* Pods_BeConnectedAPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 232BF3B434D8D21DFF5DDC39 /* Pods_BeConnectedAPP.framework */; };
+		6C3C4202248F44CD00C0E7ED /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3C4200248F44CD00C0E7ED /* CustomCell.swift */; };
+		6C3C4203248F44CD00C0E7ED /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C3C4201248F44CD00C0E7ED /* CustomCell.xib */; };
 		6C6902D32478DB90005A009A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6902D22478DB90005A009A /* RegisterViewController.swift */; };
 		6C6902D52478DBE1005A009A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6902D42478DBE1005A009A /* ViewController.swift */; };
 		6C6902D72478DC07005A009A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6902D62478DC07005A009A /* LoginViewController.swift */; };
@@ -38,7 +40,12 @@
 		6C93B186247FDAE9002BD94E /* SNSPage4ViewContoroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C93B185247FDAE9002BD94E /* SNSPage4ViewContoroller.swift */; };
 		6C93B188247FDB18002BD94E /* SNSPage5ViewContoroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C93B187247FDB18002BD94E /* SNSPage5ViewContoroller.swift */; };
 		6C93B18A247FDB3E002BD94E /* SNSPage6ViewContoroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C93B189247FDB3E002BD94E /* SNSPage6ViewContoroller.swift */; };
-		6C93B18C247FDED4002BD94E /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C93B18B247FDED4002BD94E /* PostViewController.swift */; };
+		6C93B18C247FDED4002BD94E /* GamePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C93B18B247FDED4002BD94E /* GamePostViewController.swift */; };
+		6C9BBAC6248F8DF700EFA0C5 /* FashionPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9BBAC5248F8DF700EFA0C5 /* FashionPostViewController.swift */; };
+		6C9BBAC8248F8E3600EFA0C5 /* BeautyPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9BBAC7248F8E3600EFA0C5 /* BeautyPostViewController.swift */; };
+		6C9BBACA248F8E7900EFA0C5 /* MakeupPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9BBAC9248F8E7900EFA0C5 /* MakeupPostViewController.swift */; };
+		6C9BBACC248F8EA700EFA0C5 /* PetsPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9BBACB248F8EA700EFA0C5 /* PetsPostViewController.swift */; };
+		6C9BBACE248F8EDD00EFA0C5 /* SelectPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9BBACD248F8EDD00EFA0C5 /* SelectPostViewController.swift */; };
 		6CAEA4F02481575900AA3F81 /* PostTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAEA4EF2481575900AA3F81 /* PostTime.swift */; };
 		6CB5C6A22481DA3C00BA9AB8 /* SaveProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB5C6A12481DA3C00BA9AB8 /* SaveProfile.swift */; };
 		6CB5C6A424820A1E00BA9AB8 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 6CB5C6A324820A1E00BA9AB8 /* loading.json */; };
@@ -49,6 +56,8 @@
 		232BF3B434D8D21DFF5DDC39 /* Pods_BeConnectedAPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeConnectedAPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AE9BE43E354E59D686F9A84 /* Pods-BeConnectedAPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeConnectedAPP.debug.xcconfig"; path = "Target Support Files/Pods-BeConnectedAPP/Pods-BeConnectedAPP.debug.xcconfig"; sourceTree = "<group>"; };
 		5AA0980D1E8E3DF13B222692 /* Pods-BeConnectedAPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeConnectedAPP.release.xcconfig"; path = "Target Support Files/Pods-BeConnectedAPP/Pods-BeConnectedAPP.release.xcconfig"; sourceTree = "<group>"; };
+		6C3C4200248F44CD00C0E7ED /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		6C3C4201248F44CD00C0E7ED /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		6C6902D22478DB90005A009A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		6C6902D42478DBE1005A009A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6C6902D62478DC07005A009A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +90,12 @@
 		6C93B185247FDAE9002BD94E /* SNSPage4ViewContoroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPage4ViewContoroller.swift; sourceTree = "<group>"; };
 		6C93B187247FDB18002BD94E /* SNSPage5ViewContoroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPage5ViewContoroller.swift; sourceTree = "<group>"; };
 		6C93B189247FDB3E002BD94E /* SNSPage6ViewContoroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSPage6ViewContoroller.swift; sourceTree = "<group>"; };
-		6C93B18B247FDED4002BD94E /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		6C93B18B247FDED4002BD94E /* GamePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePostViewController.swift; sourceTree = "<group>"; };
+		6C9BBAC5248F8DF700EFA0C5 /* FashionPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FashionPostViewController.swift; sourceTree = "<group>"; };
+		6C9BBAC7248F8E3600EFA0C5 /* BeautyPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeautyPostViewController.swift; sourceTree = "<group>"; };
+		6C9BBAC9248F8E7900EFA0C5 /* MakeupPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeupPostViewController.swift; sourceTree = "<group>"; };
+		6C9BBACB248F8EA700EFA0C5 /* PetsPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsPostViewController.swift; sourceTree = "<group>"; };
+		6C9BBACD248F8EDD00EFA0C5 /* SelectPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPostViewController.swift; sourceTree = "<group>"; };
 		6CAEA4EF2481575900AA3F81 /* PostTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTime.swift; sourceTree = "<group>"; };
 		6CB5C6A12481DA3C00BA9AB8 /* SaveProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveProfile.swift; sourceTree = "<group>"; };
 		6CB5C6A324820A1E00BA9AB8 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
@@ -133,8 +147,13 @@
 				6C93B185247FDAE9002BD94E /* SNSPage4ViewContoroller.swift */,
 				6C93B187247FDB18002BD94E /* SNSPage5ViewContoroller.swift */,
 				6C93B189247FDB3E002BD94E /* SNSPage6ViewContoroller.swift */,
-				6C93B18B247FDED4002BD94E /* PostViewController.swift */,
+				6C9BBACD248F8EDD00EFA0C5 /* SelectPostViewController.swift */,
 				6CB8FEEA248A3AB10067926E /* MusicPostViewController.swift */,
+				6C93B18B247FDED4002BD94E /* GamePostViewController.swift */,
+				6C9BBAC5248F8DF700EFA0C5 /* FashionPostViewController.swift */,
+				6C9BBAC7248F8E3600EFA0C5 /* BeautyPostViewController.swift */,
+				6C9BBAC9248F8E7900EFA0C5 /* MakeupPostViewController.swift */,
+				6C9BBACB248F8EA700EFA0C5 /* PetsPostViewController.swift */,
 			);
 			path = Contoroller;
 			sourceTree = "<group>";
@@ -144,6 +163,8 @@
 			children = (
 				6C84062F2473CC8D007314E5 /* Main.storyboard */,
 				6C8CD2172473BB3200E353D7 /* Assets.xcassets */,
+				6C3C4200248F44CD00C0E7ED /* CustomCell.swift */,
+				6C3C4201248F44CD00C0E7ED /* CustomCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,6 +288,7 @@
 				6C6902DD2478FE70005A009A /* GoogleService-Info.plist in Resources */,
 				6C8CD2182473BB3200E353D7 /* Assets.xcassets in Resources */,
 				6C82320E247416E00044AD41 /* 3.json in Resources */,
+				6C3C4203248F44CD00C0E7ED /* CustomCell.xib in Resources */,
 				6C8406302473CC8D007314E5 /* Main.storyboard in Resources */,
 				6C823209247416CA0044AD41 /* 1.json in Resources */,
 			);
@@ -325,13 +347,16 @@
 				6C6902D72478DC07005A009A /* LoginViewController.swift in Sources */,
 				6C6902D52478DBE1005A009A /* ViewController.swift in Sources */,
 				6C93B188247FDB18002BD94E /* SNSPage5ViewContoroller.swift in Sources */,
-				6C93B18C247FDED4002BD94E /* PostViewController.swift in Sources */,
+				6C9BBACA248F8E7900EFA0C5 /* MakeupPostViewController.swift in Sources */,
+				6C93B18C247FDED4002BD94E /* GamePostViewController.swift in Sources */,
 				6C93B186247FDAE9002BD94E /* SNSPage4ViewContoroller.swift in Sources */,
 				6C8406322473CDAA007314E5 /* IntroViewController.swift in Sources */,
 				6C80D446247BA24E00185C70 /* YTPage5ViewController.swift in Sources */,
 				6C93B184247FDABC002BD94E /* SNSPage3ViewContoroller.swift in Sources */,
 				6C8BAF59247A024D00BE52BE /* YouTubeViewController.swift in Sources */,
+				6C9BBACE248F8EDD00EFA0C5 /* SelectPostViewController.swift in Sources */,
 				6CAEA4F02481575900AA3F81 /* PostTime.swift in Sources */,
+				6C3C4202248F44CD00C0E7ED /* CustomCell.swift in Sources */,
 				6CB8FEEB248A3AB10067926E /* MusicPostViewController.swift in Sources */,
 				6CB5C6A22481DA3C00BA9AB8 /* SaveProfile.swift in Sources */,
 				6C8CD20F2473BB2E00E353D7 /* AppDelegate.swift in Sources */,
@@ -343,11 +368,14 @@
 				6C80D442247BA20400185C70 /* YTPage3ViewController.swift in Sources */,
 				6C8CD2112473BB2E00E353D7 /* SceneDelegate.swift in Sources */,
 				6C80D448247BA27100185C70 /* YTPage6ViewController.swift in Sources */,
+				6C9BBACC248F8EA700EFA0C5 /* PetsPostViewController.swift in Sources */,
 				6C93B182247FDA7D002BD94E /* SNSPage1ViewContoroller.swift in Sources */,
+				6C9BBAC8248F8E3600EFA0C5 /* BeautyPostViewController.swift in Sources */,
 				6C93B180247FD9EE002BD94E /* SNSPage2ViewController.swift in Sources */,
 				6C93B18A247FDB3E002BD94E /* SNSPage6ViewContoroller.swift in Sources */,
 				6C6902D32478DB90005A009A /* RegisterViewController.swift in Sources */,
 				6C80D43C247A904500185C70 /* YouTubeData.swift in Sources */,
+				6C9BBAC6248F8DF700EFA0C5 /* FashionPostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

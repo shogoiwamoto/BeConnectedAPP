@@ -25,14 +25,14 @@ class SNSPage2ViewController: UITableViewController,SegementSlideContentScrollVi
     
     
     
-    @IBOutlet weak var SNSTimeLine: UITableView!
-    @IBOutlet weak var commentButton: UIButton!
-    
     
     var contentsArray = [postTime]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "Cell")
 
         // Do any additional setup after loading the view.
     }
@@ -41,13 +41,13 @@ class SNSPage2ViewController: UITableViewController,SegementSlideContentScrollVi
     override func viewWillAppear(_ animated: Bool) {
             super .viewWillAppear(true)
             
-            navigationController?.setNavigationBarHidden(true, animated: true)
             
-            fetchContentsData()
-            
+        featcData()
             
             
-        }
+            
+            
+    }
         
         @objc var scrollView: UIScrollView {
             
@@ -68,41 +68,37 @@ class SNSPage2ViewController: UITableViewController,SegementSlideContentScrollVi
             
         }
         
-        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-            //後で追加する
-            
-            let cell = SNSTimeLine.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            
-            
-            
-            //DBから受信したコンテンツを表示する
-            //Tagで管理
-            
-            //アイコン画像
-            let userImageView = cell.viewWithTag(1) as! UIImageView
-            userImageView.sd_setImage(with: URL(string: contentsArray[indexPath.row].userImage), completed: nil)
-            
-            //ユーザー名
-            let userNameLabel = cell.viewWithTag(2) as! UILabel
-            userNameLabel.text = contentsArray[indexPath.row].userName
-            
-            //投稿日時
-            let postDateLabel = cell.viewWithTag(3) as! UILabel
-            postDateLabel.text = contentsArray[indexPath.row].postDate
-            
-            //好きなYouTuber
-            let likeYoutuberLabel = cell.viewWithTag(4) as! UILabel
-            likeYoutuberLabel.text = contentsArray[indexPath.row].likeYoutuber
-            
-            //Yuoubeをみたコメント投稿
-            let commentLabel = cell.viewWithTag(5) as! UILabel
-            commentLabel.text = contentsArray[indexPath.row].comment
-            
-            return cell
-            
-            
-        }
+        let cell:CustomCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCell
+        
+        //アイコン画像
+        let userImageView = cell.viewWithTag(1) as! UIImageView
+        userImageView.sd_setImage(with: URL(string: contentsArray[indexPath.row].userImage), completed: nil)
+        
+        userImageView.layer.cornerRadius = 30
+        print(userImageView)
+        //ユーザー名
+        let userNameLabel = cell.viewWithTag(2) as! UILabel
+        userNameLabel.text = contentsArray[indexPath.row].userName
+        
+        //投稿日時
+        let postDateLabel = cell.viewWithTag(3) as! UILabel
+        postDateLabel.text = contentsArray[indexPath.row].postDate
+        
+        //好きなYouTuber
+        let likeYoutuberLabel = cell.viewWithTag(4) as! UILabel
+        likeYoutuberLabel.text = contentsArray[indexPath.row].likeYoutuber
+        
+        //Yuoubeをみたコメント投稿
+        let commentLabel = cell.viewWithTag(5) as! UILabel
+        commentLabel.text = contentsArray[indexPath.row].comment
+        
+        
+        return cell
+           
+    }
+ 
         
         override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             
@@ -110,17 +106,6 @@ class SNSPage2ViewController: UITableViewController,SegementSlideContentScrollVi
             return view.frame.size.height/6
         }
         
-        
-        @IBAction func commentAction(_ sender: Any) {
-            
-            let postVC = self.storyboard?.instantiateViewController(identifier: "post") as! PostViewController
-            
-            //要編集
-            //postVC.passedImage =
-            
-            //315確認　画面遷移
-            self.navigationController?.pushViewController(postVC, animated: true)
-        }
         
         
         
@@ -144,26 +129,26 @@ class SNSPage2ViewController: UITableViewController,SegementSlideContentScrollVi
                             let userImage = postData["userImage"] as? String
                             let likeyoutuber = postData["likeYoutuber"] as? String
                             let comment = postData["comment"] as? String
-                            let uID = postData["uID"] as? String
+                            //let uID = postData["uID"] as? String
                             let userAuthID = postData["userAuthID"] as? String
                             
+                            let postDate = (postData["postDate"] as? CLong)!
+                            
+                            let timeString = self.convertTimeStamp(serverTimeStamp: postDate)
+                            
+                            //let postDate = postData["postDate"] as? CLong
+                            
+                            //let timeString = self.convertTimeStamp(serverTimeStamp: postDate!)
+                            
+                            self.contentsArray.append(postTime(userImage: userImage!, userName: userName!, likeYoutuber: likeyoutuber!, comment: comment!))
                             
                             
                             
-                            if let postDate = postData["postDate"] as? CLong {
-                                
-                                let timeString = self.convertTimeStamp(serverTimeStamp: postDate)
-                                
-                                self.contentsArray.append(postTime(userImage: userImage!, userName: userName!, likeYoutuber: likeyoutuber!, postDate: timeString, comment: comment!))
-                                
-                                
-                                
-                            }
                             
                         }
                 }
                 
-                    //self.SNSTimeLine.reloadData()
+                    //self.snsTimeLine.reloadData()
                     
                 
                     //タイムラインの最新の投稿をい取得する
@@ -171,7 +156,7 @@ class SNSPage2ViewController: UITableViewController,SegementSlideContentScrollVi
                     
                     if self.contentsArray.count >= 5 {
                         
-                        self.SNSTimeLine.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                        //self.snsTimeLine.scrollToRow(at: indexPath, at: .bottom, animated: true)
                         
                         
                     }
@@ -183,6 +168,48 @@ class SNSPage2ViewController: UITableViewController,SegementSlideContentScrollVi
         }
             
         }
+    
+  func featcData() {
+        
+    var reference = Database.database().reference().child("POV1").observe(.value) { (snapshot) in
+    
+            print("投稿情報取得")
+            print(snapshot)
+        
+        self.contentsArray.removeAll()
+        
+
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                
+                for snap in snapshot {
+                    
+                    if let postData = snap.value as? [String:Any] {
+                    
+                
+                
+                    let userName = (postData["userName"] as? String)!
+                    let userImage = (postData ["userImage"] as? String)!
+                    let likeYoutuber = (postData["likeYoutuber"] as? String)!
+                    let comment = (postData["comment"] as? String)!
+                    //let postDate = (postData["postDate"] as? CLong)!
+                    
+                    //let timeString = self.convertTimeStamp(serverTimeStamp: postDate)
+                
+                    print("確認")
+                    print(userName)
+                
+                    self.contentsArray.append(postTime(userImage: userImage, userName: userName, likeYoutuber: likeYoutuber,
+                                                       comment: comment))
+                        
+                    }
+                }
+        
+            }
+        
+        self.tableView.reloadData()
+        
+        }
+    }
         
         
         

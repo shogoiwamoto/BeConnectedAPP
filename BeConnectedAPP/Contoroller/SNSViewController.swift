@@ -19,6 +19,12 @@ class SNSViewController: SegementSlideDefaultViewController {
             reloadData()
             defaultSelectedIndex = 0
         }
+    
+    override func viewDidAppear(_ animated: Bool) {
+            super .viewDidAppear(animated)
+        
+        reloadData()
+    }
         
         //ヘッダー作成
     override func segementSlideHeaderView() -> UIView {
@@ -72,13 +78,13 @@ class SNSViewController: SegementSlideDefaultViewController {
         case 1:
             return SNSPage2ViewController()
         case 2:
-            return SNSPage3ViewContoroller()
+            return SNSPage1ViewContoroller()
         case 3:
-            return SNSPage4ViewContoroller()
+            return SNSPage1ViewContoroller()
         case 4:
-            return SNSPage5ViewContoroller()
+            return SNSPage1ViewContoroller()
         case 5:
-            return SNSPage6ViewContoroller()
+            return SNSPage1ViewContoroller()
                 
         default:
             return SNSPage1ViewContoroller()

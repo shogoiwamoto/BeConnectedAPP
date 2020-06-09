@@ -33,6 +33,8 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     
     
     var userAuthID = String()
+    var passedurl = String()
+    
     
     
     
@@ -100,6 +102,10 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
     
     //Firebaseにユーザー登録
     @IBAction func registerNewUser(_ sender: Any) {
+        
+        //ユーザー名、好きなYoutuberなどを端末に保存
+        UserDefaults.standard.set(usernameTextField.text, forKey: "userName")
+        UserDefaults.standard.set(likeYouTuberTextField.text, forKey: "likeYoutuber")
         
         //遷移時のアニメーションスタート
         startAnimaition()
@@ -184,17 +190,25 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
                             //値をDBに送信
                             profileDB.updateChildValues(accountinfo)
                             
+                            self.passedurl = url!.absoluteString
+                            UserDefaults.standard.set(self.passedurl, forKey: "passurl")
+                            
+                            print(self.passedurl)
+                            
+                            //アニメーションストップ
+                            self.stopAnimation()
+                            
+                            //画面遷移
+                            self.performSegue(withIdentifier: "next", sender: nil)
+                            
+                            
+                            
                         }
+                        
                     }
                     
                 }
                 
-    
-                //アニメーションストップ
-                self.stopAnimation()
-                
-                //画面遷移
-                self.performSegue(withIdentifier: "next", sender: nil)
                 
             }
             
@@ -329,7 +343,7 @@ class RegisterViewController: UIViewController,UIImagePickerControllerDelegate,U
             
             let selectedImage = info[.originalImage] as! UIImage?
             
-            UserDefaults.standard.set(selectedImage?.jpegData(compressionQuality: 0.1),forKey: "userImage")
+            UserDefaults.standard.set(selectedImage?.jpegData(compressionQuality: 0.1),forKey: "userImageicon")
             
             userImageView.image = selectedImage
             //picerを閉じる

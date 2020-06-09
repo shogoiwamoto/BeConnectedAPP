@@ -8,15 +8,17 @@
 import UIKit
 import SegementSlide
 import Firebase
+import SDWebImage
 
 
 class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollViewDelegate {
+    
 
     var userImage = String()
     var userName = String()
     var likeYoutuber = String()
     var uID = String()
-    var commnet = String()
+    var comment = String()
     
     
     //Postする時に使う
@@ -24,32 +26,41 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
     
     
     
-    @IBOutlet weak var SNSTimeLine: UITableView!
-    @IBOutlet weak var commentButton: UIButton!
     
     var contentsArray = [postTime]()
     
+    var ref2 = Database.database().reference()
+    
+    var id = String()
     
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        tableView.delegate = self
+        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        
+        //可変の自動設定
+        //tableView.rowHeight = UITableView.automaticDimension
+        
+        
+        //tableView.estimatedRowHeight = 120
         
         
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        super .viewWillAppear(true)
+        super .viewWillAppear(animated)
         
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        //navigationController?.setNavigationBarHidden(true, animated: true)
         
-        fetchContentsData()
+        //fetchContentsData()
         
-        
+        //テスト
+        featcData()
         
     }
     
@@ -76,17 +87,26 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
         
         //後で追加する
         
-        let cell = SNSTimeLine.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell:CustomCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCell
+        //
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomCell
         
+        //cell.userImageView.sd_setImage(with: URL(string: contentsArray[indexPath.row].userImage), completed: nil)
         
+        //cell.userNameLabel.text = contentsArray[indexPath.row].userName
+        //cell.likeYoutuberLabel.text = contentsArray[indexPath.row].likeYoutuber
+        //cell.commentLabel.text = contentsArray[indexPath.row].comment
         
         //DBから受信したコンテンツを表示する
         //Tagで管理
         
+         
         //アイコン画像
         let userImageView = cell.viewWithTag(1) as! UIImageView
         userImageView.sd_setImage(with: URL(string: contentsArray[indexPath.row].userImage), completed: nil)
         
+        userImageView.layer.cornerRadius = 30
+        print(userImageView)
         //ユーザー名
         let userNameLabel = cell.viewWithTag(2) as! UILabel
         userNameLabel.text = contentsArray[indexPath.row].userName
@@ -111,29 +131,19 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         //見直し 要調整
-        return view.frame.size.height/6
+        return view.frame.size.height/5
     }
     
     
-    
-    
-    @IBAction func commentAction(_ sender: Any) {
-        
-        let postVC = self.storyboard?.instantiateViewController(identifier: "post") as! PostViewController
-        
-        //要編集
-        //postVC.passedImage =
-        
-        //315確認　画面遷移
-        self.navigationController?.pushViewController(postVC, animated: true)
-    }
-    
-    
+    /*
     
     func fetchContentsData() {
         
         //データを引っ張るところから
-        let ref = Database.database().reference().child("Music").queryLimited(toLast: 100).queryOrdered(byChild: "postDate").observe(.value) { (snapshot) in
+        var ref = Database.database().reference().child("Peace").observe(.value) { (snapshot) in
+            
+            
+            //.queryLimited(toLast: 100).queryOrdered(byChild: "postDate")
             
             //値を空にする
             self.contentsArray.removeAll()
@@ -143,36 +153,41 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
                 
                 for snap in snapshot {
                     
+                    print("チェック")
+                    print(snapshot)
+                    
                     //ディクショナリー型で値をpostDataに入れる
                     if let postData = snap.value as? [String:Any] {
                         
                         let userName = postData["userName"] as? String
+                        
+                        print("確認")
+                        print(userName)
                         let userImage = postData["userImage"] as? String
                         let likeyoutuber = postData["likeYoutuber"] as? String
                         let comment = postData["comment"] as? String
                         //let uID = postData["uID"] as? String
                         //let userAuthID = postData["userAuthID"] as? String
                         
+                        //let postDate = postData["postDate"] as? CLong
                         
+                        //let timeString = self.convertTimeStamp(serverTimeStamp: postDate!)
                         
+                        self.contentsArray.append(postTime(userImage: userImage!, userName: userName!, likeYoutuber: likeyoutuber!, comment: comment!))
                         
-                        if let postDate = postData["postDate"] as? CLong {
-                            
-                            let timeString = self.convertTimeStamp(serverTimeStamp: postDate)
-                            
-                            self.contentsArray.append(postTime(userImage: userImage!, userName: userName!, likeYoutuber: likeyoutuber!, postDate: timeString, comment: comment!))
-                            
-                            
-                            
-                        }
+                        print(self.contentsArray.debugDescription)
+                        
                         
                     }
             }
             
-                self.SNSTimeLine.reloadData()
+                //self.SNSTimeLine.reloadData()
+                
                 
             
                 //タイムラインの最新の投稿をい取得する
+                /*
+                 
                 let indexPath = IndexPath(row: self.contentsArray.count - 1, section: 0)
                 
                 if self.contentsArray.count >= 5 {
@@ -181,13 +196,57 @@ class SNSPage1ViewContoroller: UITableViewController,SegementSlideContentScrollV
                     
                     
                 }
-                
+                 */
             
                 
-            
         }
+        //self.SNSTimeLine.reloadData()
+      }
     }
+ 
+ */
+    
+    
+    func featcData() {
         
+       var reference = Database.database().reference().child("Peace").observe(.value) { (snapshot) in
+    
+            print("投稿情報取得")
+            print(snapshot)
+        
+        self.contentsArray.removeAll()
+        
+
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                
+                for snap in snapshot {
+                    
+                    if let postData = snap.value as? [String:Any] {
+                    
+                
+                
+                    let userName = (postData["userName"] as? String)!
+                    let userImage = (postData ["userImage"] as? String)!
+                    let likeYoutuber = (postData["likeYoutuber"] as? String)!
+                    let comment = (postData["comment"] as? String)!
+                    //let postDate = postData["postDate"] as? CLong
+                        
+                    //let timeString = self.convertTimeStamp(serverTimeStamp: postDate!)
+                
+                    print("確認")
+                    print(userName)
+                
+                    self.contentsArray.append(postTime(userImage: userImage, userName: userName, likeYoutuber: likeYoutuber,
+                                                       comment: comment))
+                        
+                    }
+                }
+        
+            }
+        
+        self.tableView.reloadData()
+        
+        }
     }
     
     

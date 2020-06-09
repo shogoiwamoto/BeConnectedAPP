@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import SDWebImage
 
-class PostViewController: UIViewController {
+class GamePostViewController: UIViewController {
     
     
     var passedImage = UIImage()
@@ -18,8 +18,10 @@ class PostViewController: UIViewController {
     var userImageData = Data()
     
     //データを取ってくる
-    var ref = Database.database().reference()
-    var dataArray = [Contents]()
+    //var ref = Database.database().reference()
+    //var dataArray = [Contents]()
+    
+    var postArray = [postTime]()
     
     
     var userImage = String()
@@ -28,8 +30,6 @@ class PostViewController: UIViewController {
     var uID = String()
     var userAuthID = String()
     
-    var emailText:String = ""
-    var passwordText:String = ""
     
     
     
@@ -40,24 +40,6 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         
-        /*
-         
-         
-        
-        
-        //アイコン画像を呼び出して反映する
-        if UserDefaults.standard.object(forKey: "userImage") != nil {
-            
-            userImageData = UserDefaults.standard.object(forKey: "userImage") as! Data
-            
-            userImage2 = UIImage(data: userImageData)!
-            
-            
-        }
-        
-        userImageView.image = userImage2
-     */
      
         // Do any additional setup after loading the view.
     }
@@ -68,8 +50,31 @@ class PostViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super .viewDidAppear(animated)
         
+        //URL型をキャストする
+        //userImageView.sd_setImage(with: URL(string: dataArray[0].userImage), completed: nil)
+            //sd_setImage(with: URL(string: dataArray[0].userImage), completed: nil)
         
-        fetchUserData()
+        
+        //アイコン画像を呼び出して反映する
+        if UserDefaults.standard.object(forKey: "userImageicon") != nil {
+            
+            userImageData = UserDefaults.standard.object(forKey: "userImageicon") as! Data
+            
+            userImage2 = UIImage(data: userImageData)!
+            userImageView.image = userImage2
+            
+            
+            userName = UserDefaults.standard.object(forKey: "userName") as! String
+            likeYoutuber = UserDefaults.standard.object(forKey: "likeYoutuber") as! String
+            userImage = UserDefaults.standard.object(forKey: "passurl") as! String
+            
+        }
+        
+        
+        
+        //fetchUserData()
+        
+        userImageView.layer.cornerRadius = 30
         
         /*
          
@@ -156,44 +161,82 @@ class PostViewController: UIViewController {
     
     @IBAction func postAction(_ sender: Any) {
         
+        //userImage = dataArray[0].userImage
+        //userName = dataArray[0].userName
+        //likeYoutuber = dataArray[0].likeYoutuber
         
-        userImage = dataArray[0].userImage
-        userName = dataArray[0].userName
-        likeYoutuber = dataArray[0].likeYoutuber
         
-        var timeLineDB = Database.database().reference().child("Music")
         
-        //let senduserImage = dataArray[1].userImage as! String
         
+        var timeLineDB = Database.database().reference().child("POV1").childByAutoId()
         
         //キーバリュー型で送信
         //userImageなども値を取得後に追加する
-        let postinfo = ["userImage":self.userImage as Any,"userName":self.userName as Any,"likeYoutuber":self.likeYoutuber as Any,"comment":self.commentTextView.text as Any,"postDate":ServerValue.timestamp() as! [String:Any]]
+        let postinfo = ["userImage":self.userImage as Any,"userName":self.userName as Any,"likeYoutuber":self.likeYoutuber as Any,"comment":self.commentTextView.text as Any]// as [String:Any]
         
+        //"postDate":ServerValue.timestamp()
         
-        //DBに送信
-        timeLineDB.childByAutoId().setValue(postinfo) { (error, result) in
-            
-            if error != nil {
-                
-                print(error)
-                
-            } else {
-                
-                print("送信完了")
-                
+                timeLineDB.updateChildValues(postinfo)
+        
                 self.commentTextView.text = ""
-                
-            }
+        
+        self.dismiss(animated: true, completion: nil)
+        
+        
+        //let senduserImage = dataArray[1].userImage as! String
+        /*
+         
+         
+        
+        let storage = Storage.storage().reference(forURL: "gs://fanconnect-15235.appspot.com")
+        
+        //画像が入るフォルダ
+        let key = timeLineDB.child("PostImage").childByAutoId().key
+        
+        let imageRef = storage.child("PostImage").child("\(String(describing: key!)).jpeg")
+        
+        //画像送信準備
+        var userprofileImageData:Data = Data()
+        
+        //画像→Data型になっている
+        if self.userImageView.image != nil {
+            
+            userprofileImageData = (self.userImageView.image?.jpegData(compressionQuality: 0.01))!
             
             
         }
         
         
+        let uploadTask = imageRef.putData(userprofileImageData, metadata: nil) {
+        (metaData,error) in
         
-        //navigationで戻る
-        //self.navigationController?.popViewController(animated: true)
+            if error != nil {
+            
+                print(error)
+                return
+                
+            }
+            
+            imageRef.downloadURL { (url, error) in
+            
+                if url != nil {
         
+        //キーバリュー型で送信
+        //userImageなども値を取得後に追加する
+                    let postinfo = ["userImage":url?.absoluteString as Any,"userName":self.userName as Any,"likeYoutuber":self.likeYoutuber as Any,"comment":self.commentTextView.text as Any]// as [String:Any]
+        
+        //"postDate":ServerValue.timestamp()
+        
+                    timeLineDB.updateChildValues(postinfo)
+        
+                    self.commentTextView.text = ""
+        
+                    
+                }
+            }
+        }
+    
+    */
     }
     
     
@@ -208,8 +251,12 @@ class PostViewController: UIViewController {
         return true
     }
     
-        
+    /*
+     
+    
     func fetchUserData() {
+        
+        //dataArray.removeAll()
         
 
         print(Auth.auth().currentUser!.uid)
@@ -228,7 +275,7 @@ class PostViewController: UIViewController {
               
             self.ref.child("profile").child(testkey).observe(.value) { (snapshots) in
                 
-                print("shogo")
+                print("アカウント情報取得")
                 print(snapshots)
 
                     
@@ -247,9 +294,13 @@ class PostViewController: UIViewController {
                     print(userImage)
                     print(likeYoutuber)
                     
+                    //アイコン表示
+                    //self.userImageView.sd_setImage(with: URL(string: userImage), completed: nil)
+                    
                     //self.userImageView.image = self.userImage as? UIImage
                     self.dataArray.append(Contents(userImage: userImage, userName: userName, likeYoutuber: likeYoutuber, userAuthID: userAuthID))
                     
+                    print("dataArrayにて配列型に")
                     print(self.dataArray.debugDescription)
                     
                     
@@ -263,6 +314,8 @@ class PostViewController: UIViewController {
         }
 
     }
+ 
+  */
 
 
 
