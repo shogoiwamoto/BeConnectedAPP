@@ -59,7 +59,7 @@ class MusicPostViewController: UIViewController {
     
     @IBAction func musicPostAction(_ sender: Any) {
     
-    var timeLineDB = Database.database().reference().child("POW2").childByAutoId()
+    var timeLineDB = Database.database().reference().child("Music").childByAutoId()
         
         //キーバリュー型で送信
         //userImageなども値を取得後に追加する

@@ -176,7 +176,7 @@ class SNSPage2ViewController: UITableViewController,SegementSlideContentScrollVi
     
   func featcData() {
         
-    var reference = Database.database().reference().child("POV1").observe(.value) { (snapshot) in
+    var reference = Database.database().reference().child("Game").observe(.value) { (snapshot) in
     
             print("投稿情報取得")
             print(snapshot)

@@ -77,7 +77,7 @@
 		6C84062F2473CC8D007314E5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6C8406312473CDAA007314E5 /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		6C8BAF58247A024D00BE52BE /* YouTubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeViewController.swift; sourceTree = "<group>"; };
-		6C8CD20B2473BB2E00E353D7 /* BeConnectedAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeConnectedAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C8CD20B2473BB2E00E353D7 /* Y fan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Y fan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C8CD20E2473BB2E00E353D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C8CD2102473BB2E00E353D7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6C8CD2172473BB3200E353D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 		6C8CD20C2473BB2E00E353D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6C8CD20B2473BB2E00E353D7 /* BeConnectedAPP.app */,
+				6C8CD20B2473BB2E00E353D7 /* Y fan.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,7 +242,7 @@
 			);
 			name = BeConnectedAPP;
 			productName = BeConnectedAPP;
-			productReference = 6C8CD20B2473BB2E00E353D7 /* BeConnectedAPP.app */;
+			productReference = 6C8CD20B2473BB2E00E353D7 /* Y fan.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -520,7 +520,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BeConnectedAPP2020;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Y fan";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -539,7 +539,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BeConnectedAPP2020;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Y fan";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -251,7 +251,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u8w-BL-UsN">
+                            <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u8w-BL-UsN">
                                 <rect key="frame" x="72" y="275" width="230" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -374,57 +374,79 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="O93-xc-PGS">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xB-gi-edt">
+                                            <rect key="frame" x="218" y="346" width="126" height="128"/>
+                                            <state key="normal" image="beauty"/>
+                                            <connections>
+                                                <segue destination="ipq-PF-0Ct" kind="presentation" modalPresentationStyle="fullScreen" id="3Hc-PI-iHx"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niu-Va-ezh">
+                                            <rect key="frame" x="32" y="346" width="128" height="129"/>
+                                            <state key="normal" image="fashion"/>
+                                            <connections>
+                                                <segue destination="xpe-pX-Zax" kind="presentation" modalPresentationStyle="fullScreen" id="USs-Gd-baQ"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vw-3T-IxM">
+                                            <rect key="frame" x="219" y="514" width="127" height="127"/>
+                                            <state key="normal" image="pets"/>
+                                            <connections>
+                                                <segue destination="yOT-2g-j7h" kind="presentation" modalPresentationStyle="fullScreen" id="rSU-OF-ybw"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d17-a2-rjI">
+                                            <rect key="frame" x="30" y="515" width="126" height="126"/>
+                                            <state key="normal" image="makeup"/>
+                                            <connections>
+                                                <segue destination="xQB-Pu-Wu1" kind="presentation" modalPresentationStyle="fullScreen" id="EZT-HV-2Kd"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JtH-ON-bRv">
+                                            <rect key="frame" x="219" y="180" width="126" height="126"/>
+                                            <state key="normal" image="game"/>
+                                            <connections>
+                                                <segue destination="XbH-1w-aAS" kind="presentation" modalPresentationStyle="fullScreen" id="wka-pr-Sje"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fR-vb-hAo">
+                                            <rect key="frame" x="32" y="180" width="128" height="126"/>
+                                            <state key="normal" image="music"/>
+                                            <connections>
+                                                <segue destination="2yr-x8-utH" kind="presentation" modalPresentationStyle="fullScreen" id="aO2-Pl-x7R"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="4vw-3T-IxM" secondAttribute="trailing" constant="29" id="0h0-cr-fMW"/>
+                                        <constraint firstItem="niu-Va-ezh" firstAttribute="leading" secondItem="O93-xc-PGS" secondAttribute="leading" constant="32" id="2P7-Wc-mYE"/>
+                                        <constraint firstItem="d17-a2-rjI" firstAttribute="top" secondItem="niu-Va-ezh" secondAttribute="bottom" constant="40" id="4BC-M4-JSx"/>
+                                        <constraint firstAttribute="bottom" secondItem="4vw-3T-IxM" secondAttribute="bottom" constant="171" id="9ga-6a-egC"/>
+                                        <constraint firstAttribute="bottom" secondItem="d17-a2-rjI" secondAttribute="bottom" constant="171" id="CjD-Rr-Rk1"/>
+                                        <constraint firstAttribute="trailing" secondItem="JtH-ON-bRv" secondAttribute="trailing" constant="30" id="F5D-0u-ktW"/>
+                                        <constraint firstItem="6xB-gi-edt" firstAttribute="leading" secondItem="niu-Va-ezh" secondAttribute="trailing" constant="58" id="H70-nb-vWr"/>
+                                        <constraint firstAttribute="trailing" secondItem="6xB-gi-edt" secondAttribute="trailing" constant="31" id="INU-PS-mbF"/>
+                                        <constraint firstItem="6xB-gi-edt" firstAttribute="top" secondItem="JtH-ON-bRv" secondAttribute="bottom" constant="40" id="KMP-Gl-PUP"/>
+                                        <constraint firstItem="9fR-vb-hAo" firstAttribute="top" secondItem="O93-xc-PGS" secondAttribute="top" constant="180" id="ME9-Uz-Ic8"/>
+                                        <constraint firstItem="niu-Va-ezh" firstAttribute="top" secondItem="9fR-vb-hAo" secondAttribute="bottom" constant="40" id="P4W-Kr-nni"/>
+                                        <constraint firstItem="d17-a2-rjI" firstAttribute="top" secondItem="niu-Va-ezh" secondAttribute="bottom" constant="40" id="Qcv-Gv-m6p"/>
+                                        <constraint firstItem="6xB-gi-edt" firstAttribute="top" secondItem="JtH-ON-bRv" secondAttribute="bottom" constant="40" id="RUF-yZ-lx9"/>
+                                        <constraint firstItem="9fR-vb-hAo" firstAttribute="leading" secondItem="O93-xc-PGS" secondAttribute="leading" constant="32" id="Uh7-wo-6FM"/>
+                                        <constraint firstItem="4vw-3T-IxM" firstAttribute="leading" secondItem="d17-a2-rjI" secondAttribute="trailing" constant="58" id="ac6-hI-37i"/>
+                                        <constraint firstItem="d17-a2-rjI" firstAttribute="leading" secondItem="O93-xc-PGS" secondAttribute="leading" constant="30" id="ai4-Ov-3KR"/>
+                                        <constraint firstItem="JtH-ON-bRv" firstAttribute="leading" secondItem="9fR-vb-hAo" secondAttribute="trailing" constant="59" id="asS-sD-JRW"/>
+                                        <constraint firstItem="niu-Va-ezh" firstAttribute="top" secondItem="9fR-vb-hAo" secondAttribute="bottom" constant="40" id="gxM-qG-hoq"/>
+                                        <constraint firstItem="4vw-3T-IxM" firstAttribute="leading" secondItem="d17-a2-rjI" secondAttribute="trailing" constant="58" id="hZQ-gs-uEC"/>
+                                        <constraint firstItem="JtH-ON-bRv" firstAttribute="top" secondItem="O93-xc-PGS" secondAttribute="top" constant="180" id="iEb-Yi-F1q"/>
+                                        <constraint firstItem="JtH-ON-bRv" firstAttribute="leading" secondItem="9fR-vb-hAo" secondAttribute="trailing" constant="59" id="jJH-TR-smK"/>
+                                        <constraint firstItem="6xB-gi-edt" firstAttribute="leading" secondItem="niu-Va-ezh" secondAttribute="trailing" constant="58" id="mYR-Ed-S37"/>
+                                        <constraint firstItem="4vw-3T-IxM" firstAttribute="top" secondItem="6xB-gi-edt" secondAttribute="bottom" constant="40" id="oIm-vM-Z7N"/>
+                                        <constraint firstItem="4vw-3T-IxM" firstAttribute="top" secondItem="6xB-gi-edt" secondAttribute="bottom" constant="40" id="q0b-iu-3Eq"/>
+                                    </constraints>
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fR-vb-hAo">
-                                <rect key="frame" x="32" y="145" width="130" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="music"/>
-                                <connections>
-                                    <segue destination="2yr-x8-utH" kind="presentation" modalPresentationStyle="fullScreen" id="aO2-Pl-x7R"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JtH-ON-bRv">
-                                <rect key="frame" x="202" y="145" width="130" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="game"/>
-                                <connections>
-                                    <segue destination="XbH-1w-aAS" kind="presentation" modalPresentationStyle="fullScreen" id="wka-pr-Sje"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niu-Va-ezh">
-                                <rect key="frame" x="32" y="341" width="130" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="fashion"/>
-                                <connections>
-                                    <segue destination="xpe-pX-Zax" kind="presentation" modalPresentationStyle="fullScreen" id="USs-Gd-baQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6xB-gi-edt">
-                                <rect key="frame" x="202" y="341" width="130" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="beauty"/>
-                                <connections>
-                                    <segue destination="ipq-PF-0Ct" kind="presentation" modalPresentationStyle="fullScreen" id="3Hc-PI-iHx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d17-a2-rjI">
-                                <rect key="frame" x="32" y="534" width="130" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="makeup"/>
-                                <connections>
-                                    <segue destination="xQB-Pu-Wu1" kind="presentation" modalPresentationStyle="fullScreen" id="EZT-HV-2Kd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4vw-3T-IxM">
-                                <rect key="frame" x="202" y="534" width="130" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="pets"/>
-                                <connections>
-                                    <segue destination="yOT-2g-j7h" kind="presentation" modalPresentationStyle="fullScreen" id="rSU-OF-ybw"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="MRV-WI-0Eh"/>

@@ -170,7 +170,7 @@ class GamePostViewController: UIViewController {
         
         
         
-        var timeLineDB = Database.database().reference().child("POV1").childByAutoId()
+        var timeLineDB = Database.database().reference().child("Game").childByAutoId()
         
         //キーバリュー型で送信
         //userImageなども値を取得後に追加する
