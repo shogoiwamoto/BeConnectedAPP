@@ -118,7 +118,7 @@ class YTPage2ViewController: UITableViewController,SegementSlideContentScrollVie
     
     func getData() {
         
-        var text = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyBPhEj9UvvQnbhS7aBmz92l8Ie0Qp00jAU&q=ゲーム実況&part=snippet&maxResults=20&order=date"
+        var text = "https://www.googleapis.com/youtube/v3/search?key=AIzaSyDFpdsuZ9DDXZVXC5QUWjP4wwSjyaHkuFs&q=ゲーム実況&part=snippet&maxResults=20&order=date"
         
         //URL内の日本語対応
         let url = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
