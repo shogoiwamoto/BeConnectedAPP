@@ -1,6 +1,6 @@
 # Y fan
 
-YouTubeで繋がる
+YouTubeで繋がる<br>
 ファン同士で楽しく動画を語り合おう。<br>
 
 # DEMO
