@@ -1,7 +1,7 @@
 # Y fan
 
 YouTubeで繋がる<br>
-ファン同士で楽しく動画を語り合おう。<br>
+fan(ファン同士)で楽しく(fun)動画を語り合おう。<br>
 
 # DEMO
 
@@ -59,4 +59,3 @@ YouTubeAPI key<br>
 # Author
 
 * 岩本 省吾
-
