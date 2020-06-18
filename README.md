@@ -5,7 +5,7 @@ fan(ファン同士)で楽しく(fun)動画を語り合おう。<br>
 
 # DEMO
 
-https://d.kuku.lu/2999da0fca
+https://d.kuku.lu/21896bdca2
 
 # Features
 
